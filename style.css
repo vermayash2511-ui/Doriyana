@@ -32,7 +32,7 @@ ul{list-style:none}
 .card-hover:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(107,45,94,.15)}
 
 /* ── HEADER ── */
-header{position:fixed;top:0;left:0;width:100%;z-index:50;transition:all .5s;background:transparent}
+header{position:fixed;top:0;left:0;width:100%;z-index:50;transition:all .5s;background:rgba(221,195,217,0.97);backdrop-filter:blur(12px);box-shadow:0 1px 0 #C9A8C5}
 header.scrolled{background:rgba(221,195,217,0.97);backdrop-filter:blur(12px);box-shadow:0 1px 0 #C9A8C5}
 .header-inner{max-width:80rem;margin:0 auto;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
 header.scrolled .header-inner{padding:.75rem 1.5rem}
@@ -40,16 +40,16 @@ header.scrolled .header-inner{padding:.75rem 1.5rem}
 .logo-img{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0}
 .logo-name{font-family:var(--font-display),serif;font-size:1.25rem;font-weight:600;color:var(--foreground);letter-spacing:-.01em}
 .nav-desktop{display:flex;align-items:center;gap:2rem}
-.nav-desktop a{font-size:.875rem;font-weight:500;letter-spacing:.025em;color:rgba(250,246,240,.8);transition:color .2s;text-decoration:none}
+.nav-desktop a{font-size:.875rem;font-weight:500;letter-spacing:.025em;color:var(--foreground);transition:color .2s;text-decoration:none}
 header.scrolled .nav-desktop a,.nav-active{color:var(--foreground)!important}
 .nav-desktop a:hover,.nav-active{color:var(--primary)!important}
 .nav-actions{display:flex;align-items:center;gap:.75rem}
-.cart-btn{position:relative;padding:.5rem;border-radius:50%;background:none;border:none;color:rgba(250,246,240,.9);transition:color .2s;display:flex}
+.cart-btn{position:relative;padding:.5rem;border-radius:50%;background:none;border:none;color:var(--foreground);transition:color .2s;display:flex}
 header.scrolled .cart-btn{color:var(--foreground)}
 .cart-count{position:absolute;top:0;right:0;width:18px;height:18px;border-radius:50%;background:var(--primary);color:white;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center}
 .shop-btn{background:var(--primary);color:var(--primary-foreground);padding:.625rem 1.25rem;font-size:.875rem;font-weight:500;letter-spacing:.025em;border-radius:9999px;border:none;transition:background .2s;white-space:nowrap;text-decoration:none}
 .shop-btn:hover{background:#7B1C62}
-.hamburger-btn{display:none;padding:.5rem;background:none;border:none;color:rgba(250,246,240,.9)}
+.hamburger-btn{display:none;padding:.5rem;background:none;border:none;color:var(--foreground)}
 header.scrolled .hamburger-btn{color:var(--foreground)}
 
 /* ── MOBILE DRAWER ── */
