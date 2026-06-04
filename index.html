@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doriyana — Handmade Crochet Accessories</title>
+<meta name="description" content="Handcrafted crochet bows, flowers, bags & keychains by Khushi Verma. Where traditional craft meets couture aesthetics. Shop Doriyana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.jpg" alt="Doriyana Logo" class="logo-img">
+      <span class="logo-name">Doriyana</span>
+    </a>
+    <nav class="nav-desktop">
+      <a href="products.html">Shop</a>
+      <a href="products.html">Collections</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" id="cartToggle" aria-label="Cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none">0</span>
+      </button>
+      <a href="products.html" class="shop-btn">Shop Now</a>
+      <button class="hamburger-btn" id="openMenu" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.jpg" alt="Doriyana Logo" class="logo-img">
+      <span class="logo-name">Doriyana</span>
+    </a>
+    <button class="drawer-close" id="closeMenu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="products.html" onclick="closeDrawer()">Shop</a>
+    <a href="products.html" onclick="closeDrawer()">Collections</a>
+    <a href="#about" onclick="closeDrawer()">About</a>
+    <a href="#" onclick="closeDrawer();openCart()">Bag</a>
+  </nav>
+  <a href="products.html" class="drawer-cta" onclick="closeDrawer()">Shop Now</a>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">Your Bag</h2>
+    <button class="cart-close" onclick="closeCart()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">🛍️</div>
+      <p class="cart-empty-title">Your bag is empty</p>
+      <p class="cart-empty-sub">Add some beautiful pieces to get started</p>
+      <a href="products.html" class="btn-primary-sm" onclick="closeCart()">Browse Collection</a>
+    </div>
+    <div id="cartItems"></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-val" id="cartTotal">₹0</span>
+    </div>
+    <p class="cart-note">Final price confirmed via WhatsApp. Handcrafted &amp; shipped in 5–7 days.</p>
+    <button class="btn-wa-checkout" id="checkoutBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Checkout via WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-right"></div>
+  <div class="hero-bg-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-content animate-on-scroll">
+      <div class="hero-pill"><span class="hero-dot"></span>Handmade in India</div>
+      <h1 class="hero-h1">Crafted<br><em>with thread</em><br>&amp; soul.</h1>
+      <p class="hero-desc">Crochet bows, flowers, bags, and keychains — each piece woven by hand with poetic intention by Khushi Verma.</p>
+      <div class="hero-btns">
+        <a href="products.html" class="btn-primary-hero">Shop the Collection</a>
+        <a href="#about" class="btn-outline-hero">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">200+</div><div class="stat-label">Happy Customers</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Handmade</div></div>
+        <div><div class="stat-num">5★</div><div class="stat-label">Avg. Rating</div></div>
+      </div>
+    </div>
+    <div class="hero-visual animate-on-scroll" style="transition-delay:200ms">
+      <div class="hero-img-wrap">
+        <div class="hero-circle-bg"></div>
+        <div class="hero-img-box">
+          <img src="images/hero.jpg" alt="Artisan hands crocheting" class="hero-image-pan">
+        </div>
+        <div class="hero-float">
+          <span class="hero-float-emoji">🧶</span>
+          <div><p>New Arrivals</p><small>Spring Collection</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-bob float-bob"><div class="scroll-ring"></div></div>
+</section>
+
+<!-- FEATURED -->
+<section class="section-pad" style="background:var(--background)">
+  <div class="container">
+    <div class="section-header-row animate-on-scroll">
+      <div>
+        <span class="section-eyebrow">Handpicked for you</span>
+        <h2 class="font-display text-section-lg">Featured<br><em style="font-weight:300;font-style:italic;color:var(--primary)">Pieces</em></h2>
+      </div>
+      <a href="products.html" class="view-all-link">View all collections <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="bento animate-on-scroll">
+      <a class="bento-card span-col-2-row-2 card-hover" href="products.html">
+        <div class="card-img-wrap"><img src="images/bow.jpg" alt="Pearl Bow Hair Clip"><div class="card-overlay"></div><span class="card-pill">Bestseller</span></div>
+        <div class="card-footer"><div><div class="card-cat">Bows</div><div class="card-name">Pearl Bow Hair Clip</div></div><div class="card-price">₹349</div></div>
+      </a>
+      <a class="bento-card card-hover" href="products.html">
+        <div class="card-img-wrap"><img src="images/flower.jpg" alt="Daisy Flower Brooch"><div class="card-overlay"></div><span class="card-pill">New</span></div>
+        <div class="card-footer"><div><div class="card-cat">Flowers</div><div class="card-name">Daisy Flower Brooch</div></div><div class="card-price">₹249</div></div>
+      </a>
+      <a class="bento-card card-hover" href="products.html">
+        <div class="card-img-wrap"><img src="images/bag.jpg" alt="Mini Tote Bag"><div class="card-overlay"></div><span class="card-pill">Limited</span></div>
+        <div class="card-footer"><div><div class="card-cat">Bags</div><div class="card-name">Mini Tote Bag</div></div><div class="card-price">₹799</div></div>
+      </a>
+      <a class="bento-card span-col-2 card-hover" href="products.html">
+        <div class="card-img-wrap"><img src="images/keychain.jpg" alt="Heart Keychain"><div class="card-overlay"></div><span class="card-pill">Cute</span></div>
+        <div class="card-footer"><div><div class="card-cat">Keychains</div><div class="card-name">Heart Keychain</div></div><div class="card-price">₹149</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-blob1 blob-primary"></div>
+  <div class="about-blob2 blob-accent"></div>
+  <div class="about-grid">
+    <div class="about-img-wrap animate-on-scroll">
+      <div class="about-img-box"><img src="images/about.jpg" alt="Khushi Verma crocheting"></div>
+      <div class="about-badge-years"><strong>3+</strong><span>Years of crafting</span></div>
+      <div class="about-badge-quote"><p>"Every stitch tells a story."</p><small>— Khushi Verma</small></div>
+    </div>
+    <div class="about-content animate-on-scroll" style="transition-delay:150ms">
+      <div>
+        <span class="section-eyebrow">The maker behind the magic</span>
+        <h2 class="font-display text-section-lg">Born from<br><em style="font-weight:300;font-style:italic;color:var(--primary)">poetry &amp;</em><br>patience.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <p class="about-body">Doriyana began as Khushi Verma's quiet rebellion — a way to turn thread into wearable art, to merge the slow beauty of traditional crochet with the visual language of couture.</p>
+        <p class="about-body">Each accessory is handmade from start to finish, often inspired by a poem, a season, or the way light falls on a lazy afternoon. No two pieces are identical.</p>
+      </div>
+      <div class="about-features">
+        <div class="feature-tile"><span class="feature-icon">🧶</span><div class="feature-title">Handmade</div><div class="feature-desc">Every stitch by hand</div></div>
+        <div class="feature-tile"><span class="feature-icon">🌿</span><div class="feature-title">Sustainable</div><div class="feature-desc">Natural yarns &amp; threads</div></div>
+        <div class="feature-tile"><span class="feature-icon">💌</span><div class="feature-title">Made to Order</div><div class="feature-desc">Personal &amp; intentional</div></div>
+        <div class="feature-tile"><span class="feature-icon">✨</span><div class="feature-title">One of a Kind</div><div class="feature-desc">No two pieces alike</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="reviews-header animate-on-scroll">
+    <span class="section-eyebrow">What customers say</span>
+    <h2 class="font-display text-section-lg">Loved by<br><em style="font-weight:300;font-style:italic;color:var(--primary)">200+ customers</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card animate-on-scroll">
+      <div class="stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="review-quote">"I ordered a custom bow for my sister's birthday and she absolutely loved it. The quality is unbelievable for something handmade — it feels luxurious."</p>
+      <span class="review-product">Pearl Bow Hair Clip</span>
+      <div class="review-author"><div class="author-avatar">PS</div><div><div class="author-name">Priya Sharma</div><div class="author-city">Mumbai</div></div></div>
+    </div>
+    <div class="review-card animate-on-scroll" style="transition-delay:100ms">
+      <div class="stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="review-quote">"The daisy brooch I got is literally the most beautiful accessory I own. Every time I wear it, someone asks where I got it. Khushi is so talented!"</p>
+      <span class="review-product">Daisy Flower Brooch</span>
+      <div class="review-author"><div class="author-avatar">AM</div><div><div class="author-name">Ananya Menon</div><div class="author-city">Bangalore</div></div></div>
+    </div>
+    <div class="review-card animate-on-scroll" style="transition-delay:200ms">
+      <div class="stars"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="review-quote">"Ordered the mini tote and it arrived so beautifully packaged. The craftsmanship is next level. Will definitely be ordering more pieces."</p>
+      <span class="review-product">Mini Tote Bag</span>
+      <div class="review-author"><div class="author-avatar">RK</div><div><div class="author-name">Riya Kapoor</div><div class="author-city">Delhi</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / INSTAGRAM -->
+<section class="cta-section" id="cta">
+  <img src="images/cta-bg.jpg" alt="" class="cta-bg-img" aria-hidden="true">
+  <div class="cta-overlay"></div>
+  <div class="cta-inner">
+    <div class="animate-on-scroll">
+      <span class="cta-handle">@doriyana.in</span>
+      <h2 class="font-display text-section-lg cta-title">Follow our<br><em>journey</em></h2>
+      <p class="cta-desc">Behind-the-scenes of every piece, new drops, and the quiet poetry of making something by hand.</p>
+      <div class="cta-btns">
+        <a href="https://instagram.com/doriyana.in" target="_blank" rel="noopener noreferrer" class="btn-ig">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Follow on Instagram
+        </a>
+        <a href="https://wa.me/919999999999?text=Hi%20Khushi!%20I%20found%20Doriyana%20%F0%9F%8C%B8" target="_blank" rel="noopener noreferrer" class="btn-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="insta-grid animate-on-scroll" style="transition-delay:150ms">
+      <div class="insta-item"><img src="images/insta1.jpg" alt="Crochet accessories"></div>
+      <div class="insta-item"><img src="images/insta2.jpg" alt="Handmade flower brooch"></div>
+      <div class="insta-item"><img src="images/insta3.jpg" alt="Crochet mini bag"></div>
+      <div class="insta-item"><img src="images/insta4.jpg" alt="Pastel crochet keychains"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.jpg" alt="Doriyana Logo" class="logo-img">
+        <span class="logo-name">Doriyana</span>
+      </a>
+      <p class="footer-tagline">Handmade with thread, love, and poetic intention.</p>
+    </div>
+    <div class="footer-links">
+      <a href="products.html">Shop</a>
+      <a href="products.html">Collections</a>
+      <a href="#about">About</a>
+      <a href="https://instagram.com/doriyana.in" target="_blank" rel="noopener">Instagram</a>
+      <a href="#cta">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Doriyana by Khushi Verma. All rights reserved.</p>
+    <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }, {passive:true});
+  document.getElementById('openMenu').addEventListener('click', () => {
+    document.getElementById('mobileDrawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('closeMenu').addEventListener('click', closeDrawer);
+  function closeDrawer() {
+    document.getElementById('mobileDrawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:0.1});
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
