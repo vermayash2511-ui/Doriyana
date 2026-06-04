@@ -88,8 +88,8 @@ function renderCart() {
     checkoutBtn.onclick = () => {
       const lines = cart.map(i => `• ${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString('en-IN')}`).join('\n');
       const msg = encodeURIComponent(`Hi Khushi! 🌸 I'd like to order from Doriyana:\n\n${lines}\n\nTotal: ₹${total.toLocaleString('en-IN')}\n\nCould you confirm availability and share payment details? Thank you!`);
-      // ⚠️ Replace 919999999999 with Khushi's actual WhatsApp number
-      window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+      
+      window.open(`https://wa.me/918619697628?text=${msg}`, '_blank');
     };
   }
 }
