@@ -110,6 +110,7 @@
 <!-- PRODUCTS -->
 <section class="shop-products">
   <div class="container">
+
     <!-- Filter tabs -->
     <div class="filter-bar" id="filterBar">
       <button class="filter-btn active" data-cat="all">All</button>
@@ -118,13 +119,13 @@
       <button class="filter-btn" data-cat="Bags">Bags</button>
       <button class="filter-btn" data-cat="Keychains">Keychains</button>
       <button class="filter-btn" data-cat="Toys">Toys</button>
-      <span class="product-count" id="productCount">8 pieces</span>
+      <span class="product-count" id="productCount">10 pieces</span>
     </div>
 
     <!-- Product grid -->
     <div class="products-grid" id="productsGrid">
 
-      <!-- 1. Pearl Bow -->
+      <!-- ── BOWS ── -->
       <div class="product-card animate-on-scroll" data-cat="Bows" style="transition-delay:0ms">
         <div class="product-img-wrap">
           <img src="images/bow-pearl.jpg" alt="Pearl Bow Hair Clip" loading="lazy">
@@ -133,18 +134,14 @@
         <div class="product-info">
           <p class="product-cat">Bows</p>
           <h3 class="product-name">Pearl Bow Hair Clip</h3>
-          <p class="product-desc">Delicate pearl-white crochet bow with secure clip. Perfect for everyday elegance.</p>
+          <p class="product-desc">Delicate pearl-white crochet bow with a secure clip. Soft, lightweight and perfect for everyday elegance.</p>
           <div class="product-footer">
-            <div class="product-prices">
-              <span class="price-main">₹349</span>
-              <span class="price-old">₹449</span>
-            </div>
+            <div class="product-prices"><span class="price-main">₹349</span><span class="price-old">₹449</span></div>
           </div>
           <button class="add-to-bag" onclick="addToCart('Pearl Bow Hair Clip','Bows',349,'images/bow-pearl.jpg')">Add to Bag</button>
         </div>
       </div>
 
-      <!-- 2. Rosette Bow -->
       <div class="product-card animate-on-scroll" data-cat="Bows" style="transition-delay:60ms">
         <div class="product-img-wrap">
           <img src="images/bow-rosette.jpg" alt="Rosette Bow Set" loading="lazy">
@@ -153,7 +150,7 @@
         <div class="product-info">
           <p class="product-cat">Bows</p>
           <h3 class="product-name">Rosette Bow Set</h3>
-          <p class="product-desc">A matching set of three rosette-style crochet bows in dusty rose.</p>
+          <p class="product-desc">A matching set of three rosette-style crochet bows in dusty rose. Mix and match for any outfit.</p>
           <div class="product-footer">
             <div class="product-prices"><span class="price-main">₹549</span></div>
           </div>
@@ -161,41 +158,72 @@
         </div>
       </div>
 
-      <!-- 3. Daisy Brooch -->
+      <!-- ── FLOWERS ── -->
       <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:120ms">
         <div class="product-img-wrap">
-          <img src="images/flower-daisy.jpg" alt="Daisy Flower Brooch" loading="lazy">
+          <img src="images/flower-starry-night.jpg" alt="Starry Night Flower" loading="lazy">
           <span class="product-pill">New</span>
         </div>
         <div class="product-info">
           <p class="product-cat">Flowers</p>
-          <h3 class="product-name">Daisy Flower Brooch</h3>
-          <p class="product-desc">Hand-crocheted daisy with yellow centre. Pin it to bags, coats, or lapels.</p>
-          <div class="product-footer">
-            <div class="product-prices"><span class="price-main">₹249</span></div>
-          </div>
-          <button class="add-to-bag" onclick="addToCart('Daisy Flower Brooch','Flowers',249,'images/flower-daisy.jpg')">Add to Bag</button>
-        </div>
-      </div>
-
-      <!-- 4. Wild Rose Clip -->
-      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:180ms">
-        <div class="product-img-wrap">
-          <img src="images/flower-rose.jpg" alt="Wild Rose Clip" loading="lazy">
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Flowers</p>
-          <h3 class="product-name">Wild Rose Clip</h3>
-          <p class="product-desc">A layered crochet rose in blush pink with a secure alligator clip.</p>
+          <h3 class="product-name">Starry Night Flower</h3>
+          <p class="product-desc">Inspired by Van Gogh's masterpiece — a bold blue crochet flower with a swirling turquoise centre and golden heart. A true wearable artwork.</p>
           <div class="product-footer">
             <div class="product-prices"><span class="price-main">₹299</span></div>
           </div>
-          <button class="add-to-bag" onclick="addToCart('Wild Rose Clip','Flowers',299,'images/flower-rose.jpg')">Add to Bag</button>
+          <button class="add-to-bag" onclick="addToCart('Starry Night Flower','Flowers',299,'images/flower-starry-night.jpg')">Add to Bag</button>
         </div>
       </div>
 
-      <!-- 5. Mini Tote -->
-      <div class="product-card animate-on-scroll" data-cat="Bags" style="transition-delay:240ms">
+      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:180ms">
+        <div class="product-img-wrap">
+          <img src="images/flower-lily.jpg" alt="Crochet Lily" loading="lazy">
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Flowers</p>
+          <h3 class="product-name">Crochet Lily</h3>
+          <p class="product-desc">A striking magenta lily with six hand-sculpted petals and a delicate yellow stamen. Elegant as a brooch, hair pin, or gift.</p>
+          <div class="product-footer">
+            <div class="product-prices"><span class="price-main">₹399</span></div>
+          </div>
+          <button class="add-to-bag" onclick="addToCart('Crochet Lily','Flowers',399,'images/flower-lily.jpg')">Add to Bag</button>
+        </div>
+      </div>
+
+      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:240ms">
+        <div class="product-img-wrap">
+          <img src="images/flower-tulip.jpg" alt="Crochet Tulip" loading="lazy">
+          <span class="product-pill">Cute</span>
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Flowers</p>
+          <h3 class="product-name">Crochet Tulip</h3>
+          <p class="product-desc">A soft pink 3D tulip with a crocheted green stem and leaf. Sweet, charming, and perfect as a keepsake or desk decoration.</p>
+          <div class="product-footer">
+            <div class="product-prices"><span class="price-main">₹250</span></div>
+          </div>
+          <button class="add-to-bag" onclick="addToCart('Crochet Tulip','Flowers',250,'images/flower-tulip.jpg')">Add to Bag</button>
+        </div>
+      </div>
+
+      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:300ms">
+        <div class="product-img-wrap">
+          <img src="images/flower-sunflower.jpg" alt="Crochet Sunflower" loading="lazy">
+          <span class="product-pill">Bestseller</span>
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Flowers</p>
+          <h3 class="product-name">Crochet Sunflower</h3>
+          <p class="product-desc">Bright golden sunflowers with rich brown centres — available as a single stem or pair. Brings warmth and joy to any space or outfit.</p>
+          <div class="product-footer">
+            <div class="product-prices"><span class="price-main">₹499</span></div>
+          </div>
+          <button class="add-to-bag" onclick="addToCart('Crochet Sunflower','Flowers',499,'images/flower-sunflower.jpg')">Add to Bag</button>
+        </div>
+      </div>
+
+      <!-- ── BAGS ── -->
+      <div class="product-card animate-on-scroll" data-cat="Bags" style="transition-delay:360ms">
         <div class="product-img-wrap">
           <img src="images/bag-mini.jpg" alt="Mini Tote Bag" loading="lazy">
           <span class="product-pill">Limited</span>
@@ -203,7 +231,7 @@
         <div class="product-info">
           <p class="product-cat">Bags</p>
           <h3 class="product-name">Mini Tote Bag</h3>
-          <p class="product-desc">Structured mini tote in natural cotton yarn. Fits your essentials beautifully.</p>
+          <p class="product-desc">Structured mini tote in natural cotton yarn. Fits your essentials beautifully with a handwoven finish.</p>
           <div class="product-footer">
             <div class="product-prices"><span class="price-main">₹799</span></div>
           </div>
@@ -211,8 +239,7 @@
         </div>
       </div>
 
-      <!-- 6. Plum Bucket - Sold Out -->
-      <div class="product-card animate-on-scroll" data-cat="Bags" style="transition-delay:300ms">
+      <div class="product-card animate-on-scroll" data-cat="Bags" style="transition-delay:420ms">
         <div class="product-img-wrap">
           <img src="images/bag-plum.jpg" alt="Plum Bucket Bag" loading="lazy">
           <span class="product-pill">New</span>
@@ -221,7 +248,7 @@
         <div class="product-info">
           <p class="product-cat">Bags</p>
           <h3 class="product-name">Plum Bucket Bag</h3>
-          <p class="product-desc">Spacious bucket bag in deep plum yarn with drawstring closure.</p>
+          <p class="product-desc">Spacious bucket bag in deep plum yarn with drawstring closure. A bold statement piece.</p>
           <div class="product-footer">
             <div class="product-prices"><span class="price-main">₹1099</span></div>
           </div>
@@ -229,8 +256,8 @@
         </div>
       </div>
 
-      <!-- 7. Heart Keychain -->
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:360ms">
+      <!-- ── KEYCHAINS ── -->
+      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:480ms">
         <div class="product-img-wrap">
           <img src="images/keychain-heart.jpg" alt="Heart Keychain" loading="lazy">
           <span class="product-pill">Cute</span>
@@ -238,7 +265,7 @@
         <div class="product-info">
           <p class="product-cat">Keychains</p>
           <h3 class="product-name">Heart Keychain</h3>
-          <p class="product-desc">Tiny crocheted heart in rose pink yarn. A sweet addition to your keys or bag.</p>
+          <p class="product-desc">Tiny crocheted heart in rose pink yarn. A sweet addition to your keys, bag zip, or as a gift.</p>
           <div class="product-footer">
             <div class="product-prices"><span class="price-main">₹149</span></div>
           </div>
@@ -246,8 +273,8 @@
         </div>
       </div>
 
-      <!-- 8. Bunny Toy -->
-      <div class="product-card animate-on-scroll" data-cat="Toys" style="transition-delay:420ms">
+      <!-- ── TOYS ── -->
+      <div class="product-card animate-on-scroll" data-cat="Toys" style="transition-delay:540ms">
         <div class="product-img-wrap">
           <img src="images/toy-bunny.jpg" alt="Bunny Plush Toy" loading="lazy">
           <span class="product-pill">Gift</span>
@@ -255,7 +282,7 @@
         <div class="product-info">
           <p class="product-cat">Toys</p>
           <h3 class="product-name">Bunny Plush Toy</h3>
-          <p class="product-desc">Handmade amigurumi bunny in cream and pink. A perfect handcrafted gift.</p>
+          <p class="product-desc">Handmade amigurumi bunny in cream and pink. Soft, safe, and a perfect handcrafted gift for all ages.</p>
           <div class="product-footer">
             <div class="product-prices"><span class="price-main">₹599</span></div>
           </div>
@@ -272,7 +299,7 @@
       </div>
       <div class="order-info-text">
         <h3 class="order-info-title">How ordering works</h3>
-        <p class="order-info-desc">Add pieces to your bag, then checkout via WhatsApp. Khushi will confirm availability, share delivery details, and handcraft your order.</p>
+        <p class="order-info-desc">Add pieces to your bag, then checkout via WhatsApp. Khushi will confirm availability, share delivery details, and handcraft your order within 5–7 days.</p>
       </div>
       <button class="order-info-btn" onclick="openCart()">View Bag</button>
     </div>
@@ -300,19 +327,13 @@
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Doriyana by Khushi Verma. All rights reserved.</p>
-    <div class="footer-legal">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-    </div>
+    <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
   </div>
 </footer>
 
 <script src="cart.js"></script>
 <script>
-  // Header always scrolled on products page
   document.getElementById('site-header').classList.add('scrolled');
-
-  // Mobile drawer
   document.getElementById('openMenu').addEventListener('click', () => {
     document.getElementById('mobileDrawer').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -322,8 +343,6 @@
     document.getElementById('mobileDrawer').classList.remove('open');
     document.body.style.overflow = '';
   }
-
-  // Filter tabs
   document.getElementById('filterBar').addEventListener('click', (e) => {
     const btn = e.target.closest('.filter-btn');
     if (!btn) return;
@@ -339,8 +358,6 @@
     });
     document.getElementById('productCount').textContent = count + ' pieces';
   });
-
-  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
