@@ -110,14 +110,42 @@
     <div class="hero-visual animate-on-scroll" style="transition-delay:200ms">
       <div class="hero-img-wrap">
         <div class="hero-circle-bg"></div>
-        <div class="hero-img-box">
-          <img src="images/hero.jpg" alt="Artisan hands crocheting" class="hero-image-pan">
+        <div class="hero-img-box" style="position:relative;overflow:hidden">
+          <!-- Slideshow -->
+          <div class="hero-slide active" style="position:absolute;inset:0;opacity:1;transition:opacity 1s ease-in-out">
+            <img src="images/hero1.jpg" alt="Khushi with crochet bouquet" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <div class="hero-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease-in-out">
+            <img src="images/hero2.jpg" alt="Crochet amigurumi family dolls" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <div class="hero-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 1s ease-in-out">
+            <img src="images/hero3.jpg" alt="Gold crochet bag with saree" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <!-- Dots -->
+          <div style="position:absolute;bottom:.875rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:10">
+            <button class="slide-dot active" onclick="goSlide(0)" style="width:8px;height:8px;border-radius:50%;border:none;background:white;opacity:1;cursor:pointer;padding:0;transition:opacity .3s"></button>
+            <button class="slide-dot" onclick="goSlide(1)" style="width:8px;height:8px;border-radius:50%;border:none;background:white;opacity:.45;cursor:pointer;padding:0;transition:opacity .3s"></button>
+            <button class="slide-dot" onclick="goSlide(2)" style="width:8px;height:8px;border-radius:50%;border:none;background:white;opacity:.45;cursor:pointer;padding:0;transition:opacity .3s"></button>
+          </div>
         </div>
         <div class="hero-float">
           <span class="hero-float-emoji">🧶</span>
           <div><p>New Arrivals</p><small>Monsoon Collection</small></div>
         </div>
       </div>
+      <script>
+        let _slide = 0;
+        const _slides = document.querySelectorAll('.hero-slide');
+        const _dots = document.querySelectorAll('.slide-dot');
+        function goSlide(n) {
+          _slides[_slide].style.opacity = '0';
+          _dots[_slide].style.opacity = '.45';
+          _slide = n;
+          _slides[_slide].style.opacity = '1';
+          _dots[_slide].style.opacity = '1';
+        }
+        setInterval(() => goSlide((_slide + 1) % _slides.length), 3500);
+      </script>
     </div>
   </div>
   <div class="scroll-bob float-bob"><div class="scroll-ring"></div></div>
