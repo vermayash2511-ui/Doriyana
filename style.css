@@ -285,28 +285,60 @@ footer{background:var(--background);border-top:1px solid var(--border);padding:4
   .nav-desktop,.nav-actions .shop-btn,.nav-actions>.cart-btn ~ *{display:none}
   .shop-btn{display:none}
   .hamburger-btn{display:block}
-  .hero-inner{flex-direction:column;padding:6rem 1.5rem 3rem}
-  .hero-content{width:100%;padding-right:0}
-  .hero-visual{width:100%;justify-content:center;margin-top:2rem}
+  /* Hero fixes */
+  .hero-inner{flex-direction:column;padding:5rem 1.25rem 2.5rem}
+  .hero-content{width:100%;padding-right:0;gap:1rem}
+  .hero-h1{font-size:2.2rem;line-height:1.1}
+  .hero-desc{font-size:.875rem;max-width:100%}
+  .hero-btns{flex-direction:row;flex-wrap:wrap;gap:.625rem}
+  .btn-primary-hero,.btn-outline-hero{padding:.75rem 1.25rem;font-size:.8rem}
+  .hero-stats{gap:1rem;padding-top:.875rem}
+  .stat-num{font-size:1.25rem}
+  .stat-label{font-size:.6rem}
+  .hero-visual{width:100%;justify-content:center;margin-top:1.5rem}
+  .hero-img-wrap{max-width:280px}
+  .hero-float{left:-0.5rem;bottom:-0.5rem;padding:.5rem .75rem}
+  .hero-float p{font-size:.7rem}
+  .hero-float small{font-size:.65rem}
   .hero-bg-right,.hero-bg-glow{display:none}
-  .bento{grid-template-columns:1fr}
+  /* Bento */
+  .bento{grid-template-columns:1fr 1fr;gap:.75rem}
   .bento-card.span-col-2,.bento-card.span-row-2,.bento-card.span-col-2-row-2{grid-column:span 1;grid-row:span 1}
-  .bento-card .card-img-wrap{aspect-ratio:4/3!important}
+  .bento-card .card-img-wrap{aspect-ratio:1/1!important}
+  .card-name{font-size:.85rem}
+  .card-price{font-size:.95rem}
+  .card-footer{padding:.75rem}
+  /* About */
   .about-grid{grid-template-columns:1fr;gap:3rem}
   .about-badge-years{right:1rem;bottom:-1rem}
   .about-badge-quote{left:0;top:-1rem}
+  .text-section-lg{font-size:clamp(2rem,8vw,3rem)}
+  /* Reviews */
   .reviews-grid{grid-template-columns:1fr}
-  .cta-inner{grid-template-columns:1fr;gap:2.5rem}
+  /* CTA */
+  .cta-inner{grid-template-columns:1fr;gap:2rem}
+  .insta-grid{grid-template-columns:1fr 1fr}
+  /* Shop page */
   .shop-hero-content{flex-direction:column}
-  .section-pad,.about-section,.reviews-section,.shop-hero,.shop-products,.cta-section{padding-left:1rem;padding-right:1rem}
+  .shop-hero{padding:5.5rem 1rem 2rem}
+  .section-pad,.about-section,.reviews-section,.shop-products,.cta-section{padding-left:1rem;padding-right:1rem}
+  /* Products grid — 2 columns on mobile */
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
+  .product-name{font-size:.875rem}
+  .price-main{font-size:1rem}
+  .add-to-bag{font-size:.75rem;padding:.5rem}
+  .product-info{padding:.75rem;gap:.5rem}
+  .filter-btn{font-size:.78rem;padding:.5rem 1rem}
 }
 @media(max-width:640px){
-  .products-grid{grid-template-columns:repeat(2,1fr)}
-  .hero-stats{gap:1.25rem}
-  .about-features{grid-template-columns:1fr}
-  .insta-grid{grid-template-columns:1fr 1fr}
+  .hero-h1{font-size:1.9rem}
+  .hero-stats{gap:.875rem}
+  .about-features{grid-template-columns:1fr 1fr}
   .order-info-strip{flex-direction:column;text-align:center}
+  .reviews-section,.reviews-header{padding-left:1rem;padding-right:1rem}
 }
 @media(max-width:400px){
-  .products-grid{grid-template-columns:1fr}
+  .hero-h1{font-size:1.7rem}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:1fr}
 }
