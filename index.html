@@ -149,252 +149,94 @@
 </section>
 
 <!-- FEATURED -->
-<section class="shop-hero">
-  <div class="shop-hero-blob"></div>
-  <div class="container shop-hero-inner">
-    <div class="shop-hero-content">
-      <div>
-        <span class="section-eyebrow">The full collection</span>
-        <h2 class="font-display text-section-lg">Shop<br><em style="font-style:italic;font-weight:300;color:var(--primary)">Doriyana</em></h2>
-      </div>
-      <p class="shop-hero-desc">Every piece is handcrafted by Khushi Verma. Browse bows, flowers, bags, keychains, and toys — each made to order with care.</p>
+<section style="padding:3.5rem 1.5rem 4rem;background:var(--background)">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="animate-on-scroll" style="text-align:center;margin-bottom:2.5rem">
+      <span class="section-eyebrow">Browse by category</span>
+      <h2 class="font-display text-section-lg">Our <em style="font-style:italic;font-weight:300;color:var(--primary)">Collections</em></h2>
     </div>
-  </div>
-</section>
+    <div class="animate-on-scroll" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem" id="homeCatGrid">
 
-<section class="shop-products">
-  <div class="container">
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" data-cat="all">All</button>
-      <button class="filter-btn" data-cat="Bows">Bows</button>
-      <button class="filter-btn" data-cat="Flowers">Flowers</button>
-      <button class="filter-btn" data-cat="Bags">Bags</button>
-      <button class="filter-btn" data-cat="Keychains">Keychains</button>
-      <button class="filter-btn" data-cat="Toys">Toys</button>
-      <span class="product-count" id="productCount">16 pieces</span>
-    </div>
-    <div class="products-grid" id="productsGrid">
-      <div class="product-card animate-on-scroll" data-cat="Bows" style="transition-delay:0ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=bow-red'">
-          <img src="images/bow-red.jpg" alt="Red Crochet Bow" loading="lazy">
-          <span class="product-pill">Bestseller</span>
+      <a href="products.html?cat=hair" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-hair.jpg" alt="Hair Accessories" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Hair Accessories</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">Bows &amp; clips</span>
         </div>
-        <div class="product-info">
-          <p class="product-cat">Bows</p>
-          <h3 class="product-name">Red Crochet Bow</h3>
-          <p class="product-desc">Bold and beautiful — a set of two chunky crochet bows in magenta and red, each with a tiny silver bell.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹199</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Red Crochet Bow','Bows',199,'images/bow-red.jpg')">Add to Bag</button>
+      </a>
+
+      <a href="products.html?cat=keychains" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-keychains.jpg" alt="Keychains" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Keychains</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">7 designs</span>
         </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Bows" style="transition-delay:60ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=bow-purple'">
-          <img src="images/bow-purple.jpg" alt="Purple Bow Keychain" loading="lazy">
-          <span class="product-pill">New</span>
+      </a>
+
+      <a href="products.html?cat=bags" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-bags.jpg" alt="Bags" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Bags</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">Totes &amp; buckets</span>
         </div>
-        <div class="product-info">
-          <p class="product-cat">Bows</p>
-          <h3 class="product-name">Purple Bow Keychain</h3>
-          <p class="product-desc">A lavender crochet bow with a sparkling purple bead bracelet and keyring.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹99</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Purple Bow Keychain','Bows',99,'images/bow-purple.jpg')">Add to Bag</button>
+      </a>
+
+      <a href="products.html?cat=plushies" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-plushies.jpg" alt="Plushies" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Plushies</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">Amigurumi toys</span>
         </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:120ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=flower-starry-night'">
-          <img src="images/flower-starry-night.jpg" alt="Starry Night Flower" loading="lazy">
-          <span class="product-pill">New</span>
+      </a>
+
+      <a href="products.html?cat=blankets" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-blankets.jpg" alt="Blankets" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Blankets</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">Coming soon</span>
         </div>
-        <div class="product-info">
-          <p class="product-cat">Flowers</p>
-          <h3 class="product-name">Starry Night Flower</h3>
-          <p class="product-desc">Inspired by Van Gogh — a bold blue crochet flower with turquoise centre and golden heart.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹299</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Starry Night Flower','Flowers',299,'images/flower-starry-night.jpg')">Add to Bag</button>
+      </a>
+
+      <a href="products.html?cat=flowers" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-flowers.jpg" alt="Flowers" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Flowers</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">4 designs</span>
         </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:180ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=flower-lily'">
-          <img src="images/flower-lily.jpg" alt="Crochet Lily" loading="lazy">
+      </a>
+
+      <a href="products.html?cat=couple" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-couple.jpg" alt="Crochet Couple" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Crochet Couple</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">Custom dolls</span>
         </div>
-        <div class="product-info">
-          <p class="product-cat">Flowers</p>
-          <h3 class="product-name">Crochet Lily</h3>
-          <p class="product-desc">A striking magenta lily with six hand-sculpted petals and a delicate yellow stamen.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹399</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Crochet Lily','Flowers',399,'images/flower-lily.jpg')">Add to Bag</button>
+      </a>
+
+      <a href="products.html?cat=baby" style="text-decoration:none;position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);display:block;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(90,32,80,.18)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="images/cat-baby.jpg" alt="Baby Collection" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white">
+          <span style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;display:block">Baby Collection</span>
+          <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block">Coming soon</span>
         </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:240ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=flower-tulip'">
-          <img src="images/flower-tulip.jpg" alt="Crochet Tulip" loading="lazy">
-          <span class="product-pill">Cute</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Flowers</p>
-          <h3 class="product-name">Crochet Tulip</h3>
-          <p class="product-desc">A soft pink 3D tulip with crocheted green stem and leaf. Perfect as a keepsake.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹250</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Crochet Tulip','Flowers',250,'images/flower-tulip.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Flowers" style="transition-delay:300ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=flower-sunflower'">
-          <img src="images/flower-sunflower.jpg" alt="Crochet Sunflower" loading="lazy">
-          <span class="product-pill">Bestseller</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Flowers</p>
-          <h3 class="product-name">Crochet Sunflower</h3>
-          <p class="product-desc">Bright golden sunflowers with rich brown centres — single or pair. Brings warmth to any space.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹499</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Crochet Sunflower','Flowers',499,'images/flower-sunflower.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Bags" style="transition-delay:360ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=bag-mini'">
-          <img src="images/bag-mini.jpg" alt="Mini Tote Bag" loading="lazy">
-          <span class="product-pill">Limited</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Bags</p>
-          <h3 class="product-name">Mini Tote Bag</h3>
-          <p class="product-desc">Structured mini tote in natural cotton yarn. Fits your essentials beautifully.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹799</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Mini Tote Bag','Bags',799,'images/bag-mini.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Bags" style="transition-delay:420ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=bag-plum'">
-          <img src="images/bag-plum.jpg" alt="Plum Bucket Bag" loading="lazy">
-          <span class="product-pill">New</span>
-          <div class="sold-out-overlay"><span class="sold-out-badge">Sold Out</span></div>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Bags</p>
-          <h3 class="product-name">Plum Bucket Bag</h3>
-          <p class="product-desc">Spacious bucket bag in deep plum yarn with drawstring closure.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹1099</span></div></div>
-          <button class="add-to-bag sold-out-btn" disabled>Sold Out</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:480ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=kc-cherry'">
-          <img src="images/kc-cherry.jpg" alt="Cherry Keychain" loading="lazy">
-          <span class="product-pill">Bestseller</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Keychains</p>
-          <h3 class="product-name">Cherry Keychain</h3>
-          <p class="product-desc">Sweet red cherries with a crocheted green bow — comes as a pair.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹89</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Cherry Keychain','Keychains',89,'images/kc-cherry.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:510ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=kc-penguin'">
-          <img src="images/kc-penguin.jpg" alt="Penguin Keychain" loading="lazy">
-          <span class="product-pill">Cute</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Keychains</p>
-          <h3 class="product-name">Cozy Penguin Keychain</h3>
-          <p class="product-desc">Adorable amigurumi penguin in blue with yellow scarf and hat.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹89</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Cozy Penguin Keychain','Keychains',89,'images/kc-penguin.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:540ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=kc-stars'">
-          <img src="images/kc-stars.jpg" alt="Pastel Stars Keychain" loading="lazy">
-          <span class="product-pill">New</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Keychains</p>
-          <h3 class="product-name">Pastel Stars Keychain</h3>
-          <p class="product-desc">Three puffy crochet stars in pink, yellow, and lavender on one ring.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹89</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Pastel Stars Keychain','Keychains',89,'images/kc-stars.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:570ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=kc-icecream'">
-          <img src="images/kc-icecream.jpg" alt="Ice Cream Jellyfish Keychain" loading="lazy">
-          <span class="product-pill">Fun</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Keychains</p>
-          <h3 class="product-name">Ice Cream &amp; Jellyfish Keychain</h3>
-          <p class="product-desc">A whimsical duo — blue ice cream cone and blushing pink jellyfish on a shared ring.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹89</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Ice Cream &amp; Jellyfish Keychain','Keychains',89,'images/kc-icecream.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:600ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=kc-sunflower'">
-          <img src="images/kc-sunflower.jpg" alt="Sunflower Name Keychain" loading="lazy">
-          <span class="product-pill">Custom</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Keychains</p>
-          <h3 class="product-name">Sunflower Name Keychain</h3>
-          <p class="product-desc">Sunflower with a personalised name tag — handstitched just for you.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹89</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Sunflower Name Keychain','Keychains',89,'images/kc-sunflower.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:630ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=kc-lovebouquet'">
-          <img src="images/kc-lovebouquet.jpg" alt="Love Bouquet Keychain" loading="lazy">
-          <span class="product-pill">Gift</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Keychains</p>
-          <h3 class="product-name">Love Bouquet Keychain</h3>
-          <p class="product-desc">A mini crochet heart in a sparkly red bouquet — perfect gift for someone you love.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹89</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Love Bouquet Keychain','Keychains',89,'images/kc-lovebouquet.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Keychains" style="transition-delay:660ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=kc-purplebow'">
-          <img src="images/kc-purplebow.jpg" alt="Purple Bow Keychain" loading="lazy">
-          <span class="product-pill">New</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Keychains</p>
-          <h3 class="product-name">Purple Bow Keychain</h3>
-          <p class="product-desc">Lavender crochet bow with sparkling purple crystal beads and silver keyring.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹89</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Purple Bow Keychain','Keychains',89,'images/kc-purplebow.jpg')">Add to Bag</button>
-        </div>
-      </div>
-      <div class="product-card animate-on-scroll" data-cat="Toys" style="transition-delay:690ms">
-        <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=toy-bunny'">
-          <img src="images/toy-bunny.jpg" alt="Bunny Plush Toy" loading="lazy">
-          <span class="product-pill">Gift</span>
-        </div>
-        <div class="product-info">
-          <p class="product-cat">Toys</p>
-          <h3 class="product-name">Bunny Plush Toy</h3>
-          <p class="product-desc">Handmade amigurumi bunny in cream and pink. Soft, safe, and a perfect gift for all ages.</p>
-          <div class="product-footer"><div class="product-prices"><span class="price-main">₹599</span></div></div>
-          <button class="add-to-bag" onclick="addToCart('Bunny Plush Toy','Toys',599,'images/toy-bunny.jpg')">Add to Bag</button>
-        </div>
-      </div>
-    </div>
-    <div class="order-info-strip">
-      <div class="order-info-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-      </div>
-      <div class="order-info-text">
-        <h3 class="order-info-title">How ordering works</h3>
-        <p class="order-info-desc">Add pieces to your bag, then checkout via WhatsApp. Khushi will confirm availability and handcraft your order within 5–7 days.</p>
-      </div>
-      <button class="order-info-btn" onclick="openCart()">View Bag</button>
+      </a>
+
     </div>
   </div>
 </section>
+<style>
+@media(max-width:768px){
+  #homeCatGrid{grid-template-columns:repeat(2,1fr)!important;gap:.875rem!important}
+}
+</style>
 <script>
   document.getElementById('filterBar').addEventListener('click', (e) => {
     const btn = e.target.closest('.filter-btn');
