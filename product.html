@@ -436,7 +436,7 @@ function renderProduct() {
         <div class="pd-actions">
           ${product.soldOut
             ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
-            : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';addToCart('${product.name}'+col,'${product.cat}',${product.price},'${product.images[0]}');openCart();})()">Add to Bag</button>`}
+            : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';const img=window._selectedImg||'${product.images[0]}';addToCart('${product.name}'+col,'${product.cat}',${product.price},img);openCart();})()">Add to Bag</button>`}
           <p class="pd-handmade-note">All pieces are handmade to order by Khushi Verma</p>
         </div>
         <a href="products.html" class="pd-back">
@@ -462,14 +462,22 @@ function selectColour(btn, imgSrc, colourName) {
   // Update selected colour label
   const label = document.getElementById('selectedColourName');
   if (label) label.textContent = colourName;
-  // Store selected colour for cart
+  // Store selected colour AND image for cart
   window._selectedColour = colourName;
+  window._selectedImg = imgSrc;
 }
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('site-header').classList.add('scrolled');
   renderProduct();
+
+  // Set default selected colour/image for colour-picker products
+  const _p = PRODUCTS.find(p => p.id === getParam('id'));
+  if (_p && _p.colours && _p.colours.length > 0) {
+    window._selectedColour = _p.colours[0].name;
+    window._selectedImg = _p.colours[0].img;
+  }
 
   document.getElementById('openMenu').addEventListener('click', () => {
     document.getElementById('mobileDrawer').classList.add('open');
