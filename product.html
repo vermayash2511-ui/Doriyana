@@ -276,9 +276,16 @@ const PRODUCTS = [
     details:['Two puff crochet flowers','Brown & cream tones','Mini claw clip base','Sturdy hold','Made to order'],
     care:'Spot clean. Keep dry.' },
   { id:'hair-butterfly-clip', name:'Butterfly Hairclip', cat:'Hair Accessories', price:99, badge:'New',
-    images:['images/hair-butterfly-clip.jpg'],
-    desc:'A pretty blue butterfly crochet clip with pink and white wing detailing. Light, whimsical and perfect for summer hair.',
-    details:['Blue butterfly design','Pink & white detailing','White antennae','Snap clip included','Made to order'],
+    images:['images/hair-butterfly-pink.jpg','images/hair-butterfly-red.jpg','images/hair-butterfly-purple.jpg','images/hair-butterfly-blue.jpg','images/hair-butterfly-clip.jpg'],
+    colours:[
+      { name:'Pink', hex:'#F472B6', img:'images/hair-butterfly-pink.jpg' },
+      { name:'Red', hex:'#DC2626', img:'images/hair-butterfly-red.jpg' },
+      { name:'Purple', hex:'#7C3AED', img:'images/hair-butterfly-purple.jpg' },
+      { name:'Blue', hex:'#3B82F6', img:'images/hair-butterfly-blue.jpg' },
+      { name:'Teal', hex:'#2DD4BF', img:'images/hair-butterfly-clip.jpg' },
+    ],
+    desc:'A pretty handcrafted butterfly crochet clip — available in 5 beautiful colours. Light, whimsical and perfect for summer hair.',
+    details:['Multiple colour options','Snap clip included','Soft cotton yarn','Lightweight & secure','Made to order'],
     care:'Spot clean gently. Keep dry.' },
   { id:'hair-lotus-small', name:'Crochet Lotus (6 inch)', cat:'Hair Accessories', price:350, badge:'',
     images:['images/hair-lotus-small.jpg'],
@@ -411,10 +418,25 @@ function renderProduct() {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>${product.care}</span>
         </div>
+        ${product.colours ? `
+        <div style="display:flex;flex-direction:column;gap:.75rem">
+          <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Choose Colour: <span id="selectedColourName" style="color:var(--primary)">${product.colours[0].name}</span></p>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+            ${product.colours.map((c,i) => `
+              <button onclick="selectColour(this,'${c.img}','${c.name}')"
+                title="${c.name}"
+                style="width:36px;height:36px;border-radius:50%;background:${c.hex};border:${i===0?'3px solid var(--foreground)':'3px solid transparent'};cursor:pointer;transition:border .2s,transform .2s;outline:none;flex-shrink:0"
+                onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'">
+              </button>`).join('')}
+          </div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+            ${product.colours.map((c,i) => `<span style="font-size:.65rem;color:var(--muted-foreground);letter-spacing:.05em;width:36px;text-align:center">${c.name}</span>`).join('')}
+          </div>
+        </div>` : ''}
         <div class="pd-actions">
           ${product.soldOut
             ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
-            : `<button class="pd-add-btn" onclick="addToCart('${product.name}','${product.cat}',${product.price},'${product.images[0]}');openCart()">Add to Bag</button>`}
+            : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';addToCart('${product.name}'+col,'${product.cat}',${product.price},'${product.images[0]}');openCart();})()">Add to Bag</button>`}
           <p class="pd-handmade-note">All pieces are handmade to order by Khushi Verma</p>
         </div>
         <a href="products.html" class="pd-back">
@@ -429,6 +451,19 @@ function switchImg(src, btn) {
   document.getElementById('mainImg').src = src;
   document.querySelectorAll('.thumb-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+}
+
+function selectColour(btn, imgSrc, colourName) {
+  // Switch main image
+  document.getElementById('mainImg').src = imgSrc;
+  // Update border on colour buttons
+  btn.parentElement.querySelectorAll('button').forEach(b => b.style.border = '3px solid transparent');
+  btn.style.border = '3px solid var(--foreground)';
+  // Update selected colour label
+  const label = document.getElementById('selectedColourName');
+  if (label) label.textContent = colourName;
+  // Store selected colour for cart
+  window._selectedColour = colourName;
 }
 
 // ── INIT ──
