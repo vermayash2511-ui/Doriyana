@@ -425,15 +425,6 @@ function renderProduct() {
           <div class="pd-price">₹${product.price.toLocaleString('en-IN')}</div>
         </div>
         <div class="pd-divider"></div>
-        <p class="pd-desc">${product.desc}</p>
-        <div class="pd-details">
-          <h3>Details</h3>
-          <ul>${details}</ul>
-        </div>
-        <div class="pd-care">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>${product.care}</span>
-        </div>
         ${product.colours ? `
         <div style="display:flex;flex-direction:column;gap:.875rem">
           <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Choose Colour: <span id="selectedColourName" style="color:var(--primary)">${product.colours[0].name}</span></p>
@@ -454,6 +445,16 @@ function renderProduct() {
             ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
             : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';const img=window._selectedImg||'${product.images[0]}';addToCart('${product.name}'+col,'${product.cat}',${product.price},img);openCart();})()">Add to Bag</button>`}
           <p class="pd-handmade-note">All pieces are handmade to order by Khushi Verma</p>
+        </div>
+        <div class="pd-divider"></div>
+        <p class="pd-desc">${product.desc}</p>
+        <div class="pd-details">
+          <h3>Details</h3>
+          <ul>${details}</ul>
+        </div>
+        <div class="pd-care">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>${product.care}</span>
         </div>
         <a href="products.html" class="pd-back">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
