@@ -332,7 +332,7 @@ const CATEGORIES = {
 
 function productCard(p) {
   return `
-    <div class="product-card animate-on-scroll" style="cursor:pointer" onclick="window.location='product.html?id=${p.id}'">
+    <div class="product-card animate-on-scroll" style="cursor:pointer" onclick="event.stopPropagation();window.location='product.html?id=${p.id}'">
       <div class="product-img-wrap">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
         ${p.badge ? `<span class="product-pill">${p.badge}</span>` : ''}
@@ -343,8 +343,8 @@ function productCard(p) {
         <p class="product-desc">${p.desc}</p>
         <div class="product-footer"><div class="product-prices"><span class="price-main">₹${p.price}</span></div></div>
         ${p.soldOut
-          ? `<button class="add-to-bag sold-out-btn" disabled>Sold Out</button>`
-          : `<button class="add-to-bag" onclick="addToCart('${p.name}','Hair Accessories',${p.price},'${p.img}')">Add to Bag</button>`}
+          ? `<button class="add-to-bag sold-out-btn" disabled onclick="event.stopPropagation()">Sold Out</button>`
+          : `<button class="add-to-bag" onclick="event.stopPropagation();addToCart('${p.name}','Hair Accessories',${p.price},'${p.img}')">Add to Bag</button>`}
       </div>
     </div>`;
 }
