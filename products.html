@@ -332,8 +332,8 @@ const CATEGORIES = {
 
 function productCard(p) {
   return `
-    <div class="product-card animate-on-scroll">
-      <div class="product-img-wrap" style="cursor:pointer" onclick="window.location='product.html?id=${p.id}'">
+    <div class="product-card animate-on-scroll" style="cursor:pointer" onclick="window.location='product.html?id=${p.id}'">
+      <div class="product-img-wrap">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
         ${p.badge ? `<span class="product-pill">${p.badge}</span>` : ''}
         ${p.soldOut ? `<div class="sold-out-overlay"><span class="sold-out-badge">Sold Out</span></div>` : ''}
