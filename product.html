@@ -3,53 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop — Doriyana</title>
-<meta name="description" content="Browse all handmade crochet accessories by Khushi Verma.">
+<title>Product — Doriyana</title>
+<meta name="description" content="Handcrafted crochet accessories by Khushi Verma.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* ── CATEGORY GRID ── */
-.cat-section{padding:5.5rem 1.5rem 4rem;background:var(--background)}
-.cat-header{text-align:center;margin-bottom:3rem}
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;max-width:1100px;margin:0 auto}
-.cat-card{position:relative;border-radius:1.25rem;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:var(--secondary);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
-.cat-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(90,32,80,.18)}
-.cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.cat-card:hover img{transform:scale(1.06)}
-.cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.1) 55%,transparent 100%)}
-.cat-label{position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1rem 1rem;color:white}
-.cat-name{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;line-height:1.2;display:block}
-.cat-count{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-top:.2rem;display:block}
-
-/* ── PRODUCTS VIEW ── */
-.products-view{display:none;padding:5.5rem 1.5rem 4rem;background:var(--background)}
-.products-view.active{display:block}
-.back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--muted-foreground);cursor:pointer;border:none;background:none;margin-bottom:2rem;transition:color .2s;padding:0;font-family:var(--font-sans)}
-.back-btn:hover{color:var(--foreground)}
-.cat-title-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
-.cat-title-bar h2{font-family:'Fraunces',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:600;color:var(--foreground)}
-.cat-title-bar h2 em{font-style:italic;font-weight:300;color:var(--primary)}
-.items-count{font-size:.8rem;color:var(--muted-foreground);letter-spacing:.08em}
-
-/* Product grid inside category */
-.cat-products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-
-/* Coming soon */
-.coming-soon{text-align:center;padding:4rem 1rem;color:var(--muted-foreground)}
-.coming-soon-icon{font-size:3rem;margin-bottom:1rem}
-.coming-soon h3{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--foreground);margin-bottom:.5rem}
-.coming-soon p{font-size:.875rem;line-height:1.6}
-
+.product-detail-wrap{max-width:80rem;margin:0 auto;padding:6rem 1.5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.product-gallery{display:flex;flex-direction:column;gap:1rem}
+.main-img-box{position:relative;aspect-ratio:1/1;border-radius:1.5rem;overflow:hidden;background:var(--secondary)}
+.main-img-box img{width:100%;height:100%;object-fit:cover;transition:opacity .3s}
+.main-badge{position:absolute;top:1rem;left:1rem;background:var(--primary);color:white;font-size:.625rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .7rem;border-radius:9999px}
+.thumb-row{display:flex;gap:.75rem}
+.thumb-btn{width:80px;height:80px;border-radius:.75rem;overflow:hidden;border:2px solid var(--border);cursor:pointer;flex-shrink:0;transition:border-color .2s;background:var(--secondary)}
+.thumb-btn.active{border-color:var(--primary)}
+.thumb-btn img{width:100%;height:100%;object-fit:cover}
+.product-detail-info{display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:7rem}
+.pd-cat{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-foreground);font-weight:600}
+.pd-name{font-family:var(--font-display),serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:600;color:var(--foreground);line-height:1.1;margin:.5rem 0}
+.pd-price{font-family:var(--font-display),serif;font-size:2rem;font-weight:600;color:var(--primary)}
+.pd-divider{height:1px;background:var(--border)}
+.pd-desc{font-size:.9375rem;color:var(--muted-foreground);line-height:1.75;font-weight:300}
+.pd-details{background:var(--secondary);border-radius:1rem;padding:1.25rem}
+.pd-details h3{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-foreground);font-weight:600;margin-bottom:.875rem}
+.pd-details ul{display:flex;flex-direction:column;gap:.625rem}
+.pd-details li{display:flex;align-items:flex-start;gap:.75rem;font-size:.875rem;color:var(--foreground)}
+.pd-details li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--primary);flex-shrink:0;margin-top:.45rem}
+.pd-care{display:flex;align-items:flex-start;gap:.75rem;font-size:.875rem;color:var(--muted-foreground)}
+.pd-care svg{flex-shrink:0;margin-top:.1rem;color:var(--primary)}
+.pd-actions{display:flex;flex-direction:column;gap:.75rem;padding-top:.5rem}
+.pd-add-btn{width:100%;padding:1rem;border-radius:9999px;font-size:.9375rem;font-weight:600;letter-spacing:.04em;background:var(--primary);color:white;border:none;cursor:pointer;transition:background .2s,transform .15s}
+.pd-add-btn:hover{background:#7B1C62;transform:scale(1.01)}
+.pd-handmade-note{text-align:center;font-size:.75rem;color:var(--muted-foreground)}
+.pd-back{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--muted-foreground);text-decoration:none;transition:color .2s;margin-top:.5rem}
+.pd-back:hover{color:var(--foreground)}
+.not-found{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1rem;padding:4rem 1.5rem}
+.not-found h2{font-family:var(--font-display),serif;font-size:2rem;color:var(--foreground)}
+.not-found p{color:var(--muted-foreground);font-size:.9rem}
 @media(max-width:768px){
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:.875rem}
-  .cat-products-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}
-  .cat-section,.products-view{padding:5rem 1rem 3rem}
-  .cat-name{font-size:1rem}
-}
-@media(max-width:400px){
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:.625rem}
+  .product-detail-wrap{grid-template-columns:1fr;gap:2rem;padding:5rem 1rem 3rem}
+  .product-detail-info{position:static}
 }
 </style>
 </head>
@@ -63,7 +57,7 @@
       <span class="logo-name">Doriyana</span>
     </a>
     <nav class="nav-desktop">
-      <a href="products.html" class="nav-active">Shop</a>
+      <a href="products.html">Shop</a>
       <a href="products.html">Collections</a>
       <a href="index.html#about">About</a>
     </nav>
@@ -131,103 +125,8 @@
   </div>
 </div>
 
-<!-- ── CATEGORIES VIEW ── -->
-<section class="cat-section" id="catSection">
-  <div class="cat-header animate-on-scroll">
-    <span class="section-eyebrow">Browse by category</span>
-    <h1 class="font-display text-section-lg">Our<br><em style="font-style:italic;font-weight:300;color:var(--primary)">Collections</em></h1>
-  </div>
-  <div class="cat-grid animate-on-scroll">
-
-    <div class="cat-card" onclick="showCategory('hair')">
-      <img src="images/cat-hair.jpg" alt="Hair Accessories">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Hair Accessories</span>
-        <span class="cat-count">Bows & clips</span>
-      </div>
-    </div>
-
-    <div class="cat-card" onclick="showCategory('keychains')">
-      <img src="images/cat-keychains.jpg" alt="Keychains">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Keychains</span>
-        <span class="cat-count">7 designs</span>
-      </div>
-    </div>
-
-    <div class="cat-card" onclick="showCategory('bags')">
-      <img src="images/cat-bags.jpg" alt="Bags">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Bags</span>
-        <span class="cat-count">Totes & buckets</span>
-      </div>
-    </div>
-
-    <div class="cat-card" onclick="showCategory('plushies')">
-      <img src="images/cat-plushies.jpg" alt="Plushies">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Plushies</span>
-        <span class="cat-count">Amigurumi toys</span>
-      </div>
-    </div>
-
-    <div class="cat-card" onclick="showCategory('blankets')">
-      <img src="images/cat-blankets.jpg" alt="Blankets">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Blankets</span>
-        <span class="cat-count">Coming soon</span>
-      </div>
-    </div>
-
-    <div class="cat-card" onclick="showCategory('flowers')">
-      <img src="images/cat-flowers.jpg" alt="Flowers">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Flowers</span>
-        <span class="cat-count">4 designs</span>
-      </div>
-    </div>
-
-    <div class="cat-card" onclick="showCategory('couple')">
-      <img src="images/cat-couple.jpg" alt="Crochet Couple">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Crochet Couple</span>
-        <span class="cat-count">Custom dolls</span>
-      </div>
-    </div>
-
-    <div class="cat-card" onclick="showCategory('baby')">
-      <img src="images/cat-baby.jpg" alt="Baby Collection">
-      <div class="cat-overlay"></div>
-      <div class="cat-label">
-        <span class="cat-name">Baby Collection</span>
-        <span class="cat-count">Coming soon</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── PRODUCTS VIEW ── -->
-<section class="products-view" id="productsView">
-  <div style="max-width:1100px;margin:0 auto">
-    <button class="back-btn" onclick="showCategories()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      All Collections
-    </button>
-    <div class="cat-title-bar">
-      <h2 id="catViewTitle">Hair Accessories</h2>
-      <span class="items-count" id="catItemsCount"></span>
-    </div>
-    <div class="cat-products-grid" id="catProductsGrid"></div>
-  </div>
-</section>
+<!-- MAIN CONTENT (rendered by JS) -->
+<main id="main-content" style="min-height:80vh"></main>
 
 <!-- FOOTER -->
 <footer>
@@ -238,11 +137,11 @@
         <span class="logo-name">Doriyana</span>
       </a>
       <p class="footer-tagline">Handmade with thread, love, and poetic intention.</p>
-      <a href="mailto:Doriyanabykhushi@gmail.com" style="font-size:.8rem;color:var(--muted-foreground);margin-top:.5rem;display:inline-block;text-decoration:none">📧 Doriyanabykhushi@gmail.com</a>
     </div>
     <div class="footer-links">
       <a href="products.html">Shop</a>
       <a href="products.html">Collections</a>
+      <a href="index.html#about">About</a>
       <a href="https://www.instagram.com/doriyanaaa?igsh=NHJwZXJkejMxN21o" target="_blank" rel="noopener">Instagram</a>
       <a href="index.html#cta">Contact</a>
     </div>
@@ -255,167 +154,351 @@
 
 <script src="cart.js"></script>
 <script>
-// ── PRODUCT DATA PER CATEGORY ──
-const CATEGORIES = {
-  hair: {
-    title: 'Hair <em>Accessories</em>',
-    customize: { img:'images/hair-customize.jpg', text:'Want something unique? We make custom hair accessories just for you — your colour, your vibe, your design.' },
-    products: [
-      { id:'hair-small-bow', name:'Crochet Small Bow', price:120, badge:'New', img:'images/hair-small-bow.jpg', desc:'A sweet little handcrafted crochet bow — perfect for everyday wear. Comes with a secure clip.' },
-      { id:'hair-big-bow', name:'Crochet Big Bow', price:250, badge:'Bestseller', img:'images/hair-big-bow.jpg', desc:'A bold statement crochet bow with elegant lace-like mesh detailing and long trailing tails.' },
-      { id:'hair-mesh-bow', name:'Mesh Bow', price:230, badge:'', img:'images/hair-mesh-bow.jpg', desc:'Red and pink mesh crochet bow on a hair tie — beautiful open-weave texture with scalloped edges.' },
-      { id:'hair-lotv-scrunchie', name:'Lily of the Valley Scrunchie', price:299, badge:'New', img:'images/hair-lotv-scrunchie.jpg', desc:'A dreamy scrunchie adorned with tiny pink lily of the valley flowers and green leaves all around.' },
-      { id:'hair-floral-tie', name:'Floral Hairtie', price:200, badge:'', img:'images/hair-floral-tie.jpg', desc:'A delicate green hairtie with hanging floral charms in red and white — like a garden on your hair.' },
-      { id:'hair-cherry-clip', name:'Cherry Hairclip', price:99, badge:'Cute', img:'images/hair-cherry-clip.jpg', desc:'A charming green crochet bow with two plump red cherries dangling below. Clip it anywhere.' },
-      { id:'hair-puff-flower-claw', name:'Puff Flower Claw Clip', price:199, badge:'', img:'images/hair-puff-flower-claw.jpg', desc:'A mini claw clip adorned with two puff flowers in brown and cream — earthy and elegant.' },
-      { id:'hair-butterfly-clip', name:'Butterfly Hairclip', price:99, badge:'New', img:'images/hair-butterfly-clip.jpg', desc:'A pretty blue butterfly crochet clip with pink and white wing detailing. Light and whimsical.' },
-      { id:'hair-lotus-small', name:'Crochet Lotus (6 inch)', price:350, badge:'', img:'images/hair-lotus-small.jpg', desc:'A layered red and pink lotus flower hairpin with green leaf detail — inspired by Indian bridal aesthetics.' },
-      { id:'hair-lotus-gajra', name:'Crochet Lotus Gajra (14 inch)', price:899, badge:'Bridal', img:'images/hair-lotus-gajra.jpg', desc:'A stunning lotus hair piece with a long gajra trail — perfect for weddings, sangeets and festive occasions.' },
-      { id:'hair-parandi', name:'Crochet Parandi', price:500, badge:'', img:'images/hair-parandi.jpg', desc:'A vibrant crochet parandi with colourful bobble flowers woven into a braided base — worn in the hair for festive looks.' },
-      { id:'hair-gajra-ghunghroo', name:'Crochet Gajra with Ghunghroo', price:599, badge:'Festive', img:'images/hair-gajra-ghunghroo.jpg', desc:'A red crochet scrunchie-style gajra adorned with gold ghunghroo bells and dangling cherry charms — made for festive buns and traditional occasions.' },
-      { id:'hair-flower-claw', name:'Flower Claw Clip', price:120, badge:'', img:'images/hair-flower-claw.jpg', desc:'A bright red flower claw clip with a yellow centre — bold, cheerful, and handmade.' },
-      { id:'hair-scrunchie', name:'Crochet Scrunchie', price:499, badge:'', img:'images/hair-scrunchie.jpg', desc:'A chunky crochet scrunchie in red with gold ghunghroo bells — traditional charm meets modern style.' },
-      { id:'hair-floral-hairband', name:'Floral Hairband', price:300, badge:'', img:'images/hair-floral-hairband.jpg', desc:'A tie-on hairband with three styles of crochet flowers in pink, blue, and yellow. Bohemian and fresh.' },
-      { id:'hair-bow-bandana', name:'Bow Mesh Bandana', price:599, badge:'', img:'images/hair-bow-bandana.jpg', desc:'A soft cream and yellow crochet bandana with lace detailing and a tiny bow — romantic and feminine.' },
-      { id:'hair-flower-bandana', name:'Flower Bandana', price:699, badge:'', img:'images/hair-flower-bandana.jpg', desc:'A triangular crochet bandana covered in sunflower squares — a boho statement piece for your hair.' },
-      { id:'hair-tulip-hairband', name:'Tulip Hairband', price:300, badge:'', img:'images/hair-tulip-hairband.jpg', desc:'Colourful bobble hairband in multiple shades — pick your favourite colour combination.' },
-      { id:'hair-antigravity-bow', name:'Anti Gravity Bow', price:100, badge:'Viral', img:'images/hair-antigravity-bow.jpg', desc:'The trendy anti-gravity crochet bow that defies physics — a playful and viral hair accessory.' },
-    ]
-  },
-  keychains: {
-    title: 'Keychains',
-    products: [
-      { id:'kc-cherry', name:'Cherry Keychain', price:89, badge:'Bestseller', img:'images/kc-cherry.jpg', desc:'Sweet red cherries with a crocheted green bow — pair.' },
-      { id:'kc-penguin', name:'Cozy Penguin Keychain', price:89, badge:'Cute', img:'images/kc-penguin.jpg', desc:'Adorable amigurumi penguin with yellow scarf and hat.' },
-      { id:'kc-stars', name:'Pastel Stars Keychain', price:89, badge:'New', img:'images/kc-stars.jpg', desc:'Three puffy stars in pink, yellow and lavender.' },
-      { id:'kc-icecream', name:'Ice Cream & Jellyfish', price:89, badge:'Fun', img:'images/kc-icecream.jpg', desc:'Whimsical duo — ice cream cone & blushing jellyfish.' },
-      { id:'kc-sunflower', name:'Sunflower Name Keychain', price:89, badge:'Custom', img:'images/kc-sunflower.jpg', desc:'Sunflower with personalised name tag — handstitched.' },
-      { id:'kc-lovebouquet', name:'Love Bouquet Keychain', price:89, badge:'Gift', img:'images/kc-lovebouquet.jpg', desc:'Mini crochet heart in sparkly red bouquet.' },
-      { id:'kc-purplebow', name:'Purple Bow Keychain', price:89, badge:'New', img:'images/kc-purplebow.jpg', desc:'Lavender bow with purple crystal beads & silver ring.' },
-    ]
-  },
-  bags: {
-    title: 'Bags',
-    products: [
-      { id:'bag-mini', name:'Mini Tote Bag', price:799, badge:'Limited', img:'images/bag-mini.jpg', desc:'Structured mini tote in natural cotton yarn.' },
-      { id:'bag-plum', name:'Plum Bucket Bag', price:1099, badge:'New', img:'images/bag-plum.jpg', desc:'Spacious bucket bag in deep plum with drawstring.', soldOut:true },
-    ]
-  },
-  plushies: {
-    title: 'Plushies',
-    products: [
-      { id:'toy-bunny', name:'Bunny Plush Toy', price:599, badge:'Gift', img:'images/toy-bunny.jpg', desc:'Handmade amigurumi bunny in cream and pink.' },
-    ]
-  },
-  blankets: {
-    title: 'Blankets',
-    products: []
-  },
-  flowers: {
-    title: 'Flowers',
-    products: [
-      { id:'flower-starry-night', name:'Starry Night Flower', price:299, badge:'New', img:'images/flower-starry-night.jpg', desc:'Bold blue flower inspired by Van Gogh.' },
-      { id:'flower-lily', name:'Crochet Lily', price:399, badge:'', img:'images/flower-lily.jpg', desc:'Striking magenta lily with yellow stamen.' },
-      { id:'flower-tulip', name:'Crochet Tulip', price:250, badge:'Cute', img:'images/flower-tulip.jpg', desc:'Soft pink 3D tulip with green stem and leaf.' },
-      { id:'flower-sunflower', name:'Crochet Sunflower', price:499, badge:'Bestseller', img:'images/flower-sunflower.jpg', desc:'Golden sunflowers with rich brown centres.' },
-    ]
-  },
-  couple: {
-    title: 'Crochet <em>Couple</em>',
-    products: []
-  },
-  baby: {
-    title: 'Baby <em>Collection</em>',
-    products: []
-  },
-};
+// ── ALL PRODUCTS DATABASE ──
+const PRODUCTS = [
+  // BOWS
+  { id:'bow-red', name:'Red Crochet Bow', cat:'Bows', price:199, badge:'Bestseller',
+    images:['images/bow-red.jpg'],
+    desc:'Bold and beautiful — a set of two chunky crochet bows in magenta and red, each with a tiny silver bell. Wear them as hair clips, pin them to a bag, or use them as festive accessories. The bell adds a delicate, playful jingle with every move.',
+    details:['Set of 2 bows — magenta & red','Silver bell charm on each bow','Secure alligator clip','Soft cotton yarn','Handmade to order'],
+    care:'Spot clean gently. Avoid soaking.' },
+  { id:'bow-purple', name:'Purple Bow Keychain', cat:'Bows', price:99, badge:'New',
+    images:['images/bow-purple.jpg'],
+    desc:'A lavender crochet bow paired with a sparkling purple crystal bead bracelet and a silver keyring. Elegant, feminine, and entirely handmade. A perfect little gift or a treat for yourself — carry a piece of handmade magic wherever you go.',
+    details:['Lavender crochet bow','Purple crystal bead bracelet','Silver keyring & chain','Smooth satin-finish yarn','Handmade to order'],
+    care:'Handle gently. Keep away from water.' },
 
-function productCard(p) {
-  return `
-    <div class="product-card animate-on-scroll" style="cursor:pointer" onclick="window.location='product.html?id=${p.id}'">
-      <div class="product-img-wrap">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
-        ${p.badge ? `<span class="product-pill">${p.badge}</span>` : ''}
-        ${p.soldOut ? `<div class="sold-out-overlay"><span class="sold-out-badge">Sold Out</span></div>` : ''}
+  // FLOWERS
+  { id:'flower-starry-night', name:'Starry Night Flower', cat:'Flowers', price:299, badge:'New',
+    images:['images/flower-starry-night.jpg'],
+    desc:'Inspired by Van Gogh\'s swirling masterpiece — a bold blue crochet flower with a layered turquoise centre, cream inner ring, and a golden heart. A true wearable artwork. Wear it as a brooch, hair pin, or gift it to someone who loves art and handcraft.',
+    details:['Navy blue petals with turquoise centre','Golden yellow core','Green crocheted stem & leaf','Secure pin back included','Made to order'],
+    care:'Spot clean only. Store flat.' },
+  { id:'flower-lily', name:'Crochet Lily', cat:'Flowers', price:399, badge:'',
+    images:['images/flower-lily.jpg'],
+    desc:'A striking magenta lily with six beautifully sculpted petals and a delicate yellow stamen at its heart. Elegant as a brooch on a jacket, a hair pin for a wedding, or a thoughtful handmade gift. This piece is Doriyana at its most couture.',
+    details:['Six sculpted magenta petals','Yellow stamen detail','Green stem & two leaves','Brooch pin or hair clip option','Made to order — 5–7 days'],
+    care:'Spot clean. Reshape petals gently if needed.' },
+  { id:'flower-tulip', name:'Crochet Tulip', cat:'Flowers', price:250, badge:'Cute',
+    images:['images/flower-tulip.jpg'],
+    desc:'A soft, 3D pink tulip with a crocheted green stem and leaf — sweet, charming, and full of spring energy. Perfect as a keepsake on your desk, a gift for a friend, or a cheerful addition to a bouquet. Each tulip is stuffed and shaped by hand.',
+    details:['3D stuffed tulip form','Soft pink cotton yarn','Green crocheted stem & leaf','Approx. 15 cm tall','Made to order'],
+    care:'Keep dry. Display as a decorative piece.' },
+  { id:'flower-sunflower', name:'Crochet Sunflower', cat:'Flowers', price:499, badge:'Bestseller',
+    images:['images/flower-sunflower.jpg'],
+    desc:'Bright golden sunflowers with rich brown crocheted centres — available as a single stem or as a pair. They bring warmth and joy to any space or outfit. Each petal is individually worked for a full, textured look that mimics a real sunflower beautifully.',
+    details:['Golden yellow petals, brown centre','Crocheted green stem & leaf','Available as single or pair','Approx. 20 cm tall','Made to order — 5–7 days'],
+    care:'Keep dry. Display in a vase or as decor.' },
+
+  // BAGS
+  { id:'bag-mini', name:'Mini Tote Bag', cat:'Bags', price:799, badge:'Limited',
+    images:['images/bag-mini.jpg','images/bag-flower.jpg'],
+    desc:'The Mini Tote is Doriyana\'s most requested piece — a structured, hand-crocheted bag in natural cotton yarn that goes with everything. The tight stitch pattern gives it rigidity so it holds its shape, while the soft yarn keeps it light. Fits a phone, wallet, keys, and a lip balm.',
+    details:['Natural cotton yarn','Reinforced double-layer handles','Approx. 22 × 18 cm','Fits everyday essentials','Made to order — 7–10 days'],
+    care:'Hand wash cold. Reshape while damp and air dry.' },
+  { id:'bag-plum', name:'Plum Bucket Bag', cat:'Bags', price:1099, badge:'New', soldOut:true,
+    images:['images/bag-plum.jpg'],
+    desc:'A spacious bucket bag in deep plum yarn with a drawstring closure. A bold statement piece that pairs beautifully with both casual and dressy outfits. The deep plum colour is rich and luxurious — a Doriyana signature.',
+    details:['Deep plum cotton yarn','Drawstring closure','Approx. 25 × 22 cm','Roomy interior','Made to order — 10–14 days'],
+    care:'Hand wash cold. Air dry in shade.' },
+
+  // KEYCHAINS
+  { id:'kc-cherry', name:'Cherry Keychain', cat:'Keychains', price:89, badge:'Bestseller',
+    images:['images/kc-cherry.jpg'],
+    desc:'Sweet red cherries with a crocheted green bow — comes as a matching pair on one ring. Clip it to your bag or keys for an instant cute upgrade. Compact, lightweight, and impossibly charming.',
+    details:['Pair of red crocheted cherries','Green bow detail','Silver keyring & chain','Soft cotton yarn','Handmade to order'],
+    care:'Keep dry. Handle gently.' },
+  { id:'kc-penguin', name:'Cozy Penguin Keychain', cat:'Keychains', price:89, badge:'Cute',
+    images:['images/kc-penguin.jpg'],
+    desc:'An adorable amigurumi penguin snuggled in a powder blue body with a sunny yellow scarf and hat. The cutest companion for your keys or bag zip. Makes a wonderful gift for anyone who loves handmade things.',
+    details:['Amigurumi penguin charm','Blue body, yellow scarf & hat','Safety eyes','Silver keyring','Handmade to order'],
+    care:'Spot clean. Keep away from water.' },
+  { id:'kc-stars', name:'Pastel Stars Keychain', cat:'Keychains', price:89, badge:'New',
+    images:['images/kc-stars.jpg'],
+    desc:'Three puffy crochet stars in pink, yellow, and lavender — all on one ring. Soft, squishy, and irresistibly cute. A cheerful keychain that adds a pastel pop to your everyday carry.',
+    details:['3 puffy stars — pink, yellow, lavender','Lightly stuffed for 3D shape','Silver keyring','Soft cotton yarn','Handmade to order'],
+    care:'Keep dry. Handle gently.' },
+  { id:'kc-icecream', name:'Ice Cream & Jellyfish Keychain', cat:'Keychains', price:89, badge:'Fun',
+    images:['images/kc-icecream.jpg'],
+    desc:'A whimsical duo — a blue ice cream cone and a blushing pink jellyfish on a shared ring. Playful, quirky, and totally one of a kind. The jellyfish has rosy cheeks and little tentacles for extra personality.',
+    details:['Blue ice cream cone charm','Pink jellyfish with blush cheeks','Shared silver keyring','Safety eyes on jellyfish','Handmade to order'],
+    care:'Spot clean. Keep away from water.' },
+  { id:'kc-sunflower', name:'Sunflower Name Keychain', cat:'Keychains', price:89, badge:'Custom',
+    images:['images/kc-sunflower.jpg'],
+    desc:'A cheerful sunflower with a green crocheted leaf and a personalised name tag — handstitched just for you. A thoughtful custom gift for someone special. Message us with the name you\'d like after ordering.',
+    details:['Sunflower with green leaf','Custom name tag included','Silver keyring','Handstitched letters','Made to order — allow extra 2 days for customisation'],
+    care:'Keep dry. Handle gently.' },
+  { id:'kc-lovebouquet', name:'Love Bouquet Keychain', cat:'Keychains', price:89, badge:'Gift',
+    images:['images/kc-lovebouquet.jpg'],
+    desc:'A mini crochet heart wrapped in a sparkly red bouquet — the sweetest little gift for someone you love. Great for Valentine\'s Day, anniversaries, or just because. Comes ready to give.',
+    details:['Red crochet heart','Sparkly red bouquet wrapper','Silver keyring','Ribbon tie at base','Handmade to order'],
+    care:'Keep dry. Display as a gift or carry as a charm.' },
+  { id:'kc-purplebow', name:'Purple Bow Keychain', cat:'Keychains', price:89, badge:'New',
+    images:['images/kc-purplebow.jpg'],
+    desc:'A lavender crochet bow with sparkling purple crystal beads and a silver keyring. Elegant, feminine, and entirely handmade. The bead bracelet doubles as a wristlet — wear it or clip it.',
+    details:['Lavender crochet bow','Purple crystal bead bracelet','Silver keyring & chain','Satin-finish yarn','Handmade to order'],
+    care:'Handle gently. Keep away from water.' },
+
+  // HAIR ACCESSORIES
+  { id:'hair-small-bow', name:'Crochet Small Bow', cat:'Hair Accessories', price:120, badge:'New',
+    images:['images/hair-small-bow.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-small-bow.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-small-bow.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-small-bow.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-small-bow.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-small-bow.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-small-bow.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-small-bow.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-small-bow.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-small-bow.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-small-bow.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-small-bow.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-small-bow.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-small-bow.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-small-bow.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-small-bow.jpg'}],
+    desc:'A sweet little handcrafted crochet bow — perfect for everyday wear. Comes with a secure clip. Available in multiple colours.',
+    details:['Compact bow size','Secure alligator clip','Soft cotton yarn','Available in multiple colours','Made to order'],
+    care:'Spot clean gently. Keep away from water.' },
+  { id:'hair-big-bow', name:'Crochet Big Bow', cat:'Hair Accessories', price:250, badge:'Bestseller',
+    images:['images/hair-big-bow.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-big-bow.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-big-bow.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-big-bow.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-big-bow.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-big-bow.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-big-bow.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-big-bow.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-big-bow.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-big-bow.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-big-bow.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-big-bow.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-big-bow.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-big-bow.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-big-bow.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-big-bow.jpg'}],
+    desc:'A bold statement crochet bow with elegant lace-like mesh detailing and long trailing tails. Makes every hairstyle look editorial.',
+    details:['Large statement bow','Open mesh lace design','Long trailing tails','Secure clip included','Made to order'],
+    care:'Spot clean only. Handle gently.' },
+  { id:'hair-mesh-bow', name:'Mesh Bow', cat:'Hair Accessories', price:230, badge:'',
+    images:['images/hair-mesh-bow.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-mesh-bow.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-mesh-bow.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-mesh-bow.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-mesh-bow.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-mesh-bow.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-mesh-bow.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-mesh-bow.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-mesh-bow.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-mesh-bow.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-mesh-bow.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-mesh-bow.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-mesh-bow.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-mesh-bow.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-mesh-bow.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-mesh-bow.jpg'}],
+    desc:'Red and pink mesh crochet bow on a hair tie — beautiful open-weave texture with scalloped edges. A romantic everyday piece.',
+    details:['Red & pink dual tone','Open mesh texture','Scalloped edges','On hair tie band','Made to order'],
+    care:'Spot clean. Do not pull the mesh.' },
+  { id:'hair-lotv-scrunchie', name:'Lily of the Valley Scrunchie', cat:'Hair Accessories', price:299, badge:'New',
+    images:['images/hair-lotv-scrunchie.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-lotv-scrunchie.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-lotv-scrunchie.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-lotv-scrunchie.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-lotv-scrunchie.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-lotv-scrunchie.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-lotv-scrunchie.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-lotv-scrunchie.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-lotv-scrunchie.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-lotv-scrunchie.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-lotv-scrunchie.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-lotv-scrunchie.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-lotv-scrunchie.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-lotv-scrunchie.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-lotv-scrunchie.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-lotv-scrunchie.jpg'}],
+    desc:'A dreamy scrunchie adorned with tiny pink lily of the valley flowers and green leaves all around. Delicate, feminine, and totally unique.',
+    details:['Pink lily of the valley florals','Green leaf detailing','Stretchy scrunchie base','Approx. 7 cm diameter','Made to order'],
+    care:'Spot clean. Keep dry.' },
+  { id:'hair-floral-tie', name:'Floral Hairtie', cat:'Hair Accessories', price:200, badge:'',
+    images:['images/hair-floral-tie.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-floral-tie.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-floral-tie.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-floral-tie.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-floral-tie.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-floral-tie.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-floral-tie.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-floral-tie.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-floral-tie.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-floral-tie.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-floral-tie.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-floral-tie.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-floral-tie.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-floral-tie.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-floral-tie.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-floral-tie.jpg'}],
+    desc:'A delicate green hairtie with hanging floral charms in red and white — like a little garden you carry in your hair.',
+    details:['Green crochet base bar','Hanging floral charms','Red & white blooms','Lightweight & secure','Made to order'],
+    care:'Handle gently. Keep dry.' },
+  { id:'hair-cherry-clip', name:'Cherry Hairclip', cat:'Hair Accessories', price:99, badge:'Cute',
+    images:['images/hair-cherry-clip.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-cherry-clip.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-cherry-clip.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-cherry-clip.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-cherry-clip.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-cherry-clip.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-cherry-clip.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-cherry-clip.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-cherry-clip.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-cherry-clip.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-cherry-clip.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-cherry-clip.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-cherry-clip.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-cherry-clip.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-cherry-clip.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-cherry-clip.jpg'}],
+    desc:'A charming green crochet bow with two plump red cherries dangling below. Clip it to your hair, bag or jacket for instant cuteness.',
+    details:['Green crochet bow','Two red cherry charms','Secure snap clip','Lightweight','Made to order'],
+    care:'Spot clean. Keep dry.' },
+  { id:'hair-puff-flower-claw', name:'Puff Flower Claw Clip', cat:'Hair Accessories', price:199, badge:'',
+    images:['images/hair-puff-flower-claw.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-puff-flower-claw.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-puff-flower-claw.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-puff-flower-claw.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-puff-flower-claw.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-puff-flower-claw.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-puff-flower-claw.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-puff-flower-claw.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-puff-flower-claw.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-puff-flower-claw.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-puff-flower-claw.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-puff-flower-claw.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-puff-flower-claw.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-puff-flower-claw.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-puff-flower-claw.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-puff-flower-claw.jpg'}],
+    desc:'A mini claw clip adorned with two puff flowers in brown and cream — earthy, elegant and perfect for messy buns.',
+    details:['Two puff crochet flowers','Brown & cream tones','Mini claw clip base','Sturdy hold','Made to order'],
+    care:'Spot clean. Keep dry.' },
+  { id:'hair-butterfly-clip', name:'Butterfly Hairclip', cat:'Hair Accessories', price:99, badge:'New',
+    images:['images/hair-butterfly-pink.jpg','images/hair-butterfly-red.jpg','images/hair-butterfly-purple.jpg','images/hair-butterfly-blue.jpg','images/hair-butterfly-clip.jpg'],
+    colours:[
+      { name:'Pink', hex:'#F472B6', img:'images/hair-butterfly-pink.jpg' },
+      { name:'Red', hex:'#DC2626', img:'images/hair-butterfly-red.jpg' },
+      { name:'Purple', hex:'#7C3AED', img:'images/hair-butterfly-purple.jpg' },
+      { name:'Blue', hex:'#3B82F6', img:'images/hair-butterfly-blue.jpg' },
+      { name:'Teal', hex:'#2DD4BF', img:'images/hair-butterfly-clip.jpg' },
+    ],
+    desc:'A pretty handcrafted butterfly crochet clip — available in 5 beautiful colours. Light, whimsical and perfect for summer hair.',
+    details:['Multiple colour options','Snap clip included','Soft cotton yarn','Lightweight & secure','Made to order'],
+    care:'Spot clean gently. Keep dry.' },
+  { id:'hair-lotus-small', name:'Crochet Lotus (6 inch)', cat:'Hair Accessories', price:350, badge:'',
+    images:['images/hair-lotus-small.jpg'],
+    desc:'A layered red and pink lotus flower hairpin with green leaf detail — inspired by Indian bridal aesthetics. Wear it at the back of a bun.',
+    details:['6 inch lotus diameter','Layered red & pink petals','Green leaf base','Secure pin back','Made to order — 7 days'],
+    care:'Store flat. Handle petals gently.' },
+  { id:'hair-lotus-gajra', name:'Crochet Lotus Gajra (14 inch)', cat:'Hair Accessories', price:899, badge:'Bridal',
+    images:['images/hair-lotus-gajra.jpg'],
+    desc:'A stunning large lotus hair piece with a long gajra trail — perfect for weddings, sangeets and festive occasions. A true heirloom piece.',
+    details:['14 inch gajra trail','Large lotus centre piece','Pink & white flowers','Green leaf garland','Made to order — 10–14 days'],
+    care:'Store flat. Handle with care. Keep dry.' },
+  { id:'hair-parandi', name:'Crochet Parandi', cat:'Hair Accessories', price:500, badge:'',
+    images:['images/hair-parandi.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-parandi.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-parandi.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-parandi.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-parandi.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-parandi.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-parandi.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-parandi.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-parandi.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-parandi.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-parandi.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-parandi.jpg'}],
+    desc:'A vibrant crochet parandi with colourful bobble flowers woven into a braided base — worn in the hair for festive and traditional looks.',
+    details:['Colourful bobble design','Braided base','Multiple colour options','Approx. 40 cm length','Made to order'],
+    care:'Keep dry. Store flat.' },
+  { id:'hair-gajra-ghunghroo', name:'Crochet Gajra with Ghunghroo', cat:'Hair Accessories', price:599, badge:'Festive',
+    images:['images/hair-gajra-ghunghroo.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-gajra-ghunghroo.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-gajra-ghunghroo.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-gajra-ghunghroo.jpg'},{name:'Off White',hex:'#FAF7F0',img:'images/hair-gajra-ghunghroo.jpg'}],
+    desc:'A red crochet scrunchie-style gajra adorned with gold ghunghroo bells and dangling cherry charms — made for festive buns and traditional occasions.',
+    details:['Red crochet gajra','Gold ghunghroo bells','Dangling cherry charms','Fits medium to large buns','Made to order — 7 days'],
+    care:'Handle ghunghroo gently. Spot clean only.' },
+  { id:'hair-flower-claw', name:'Flower Claw Clip', cat:'Hair Accessories', price:120, badge:'',
+    images:['images/hair-flower-claw.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-flower-claw.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-flower-claw.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-flower-claw.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-flower-claw.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-flower-claw.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-flower-claw.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-flower-claw.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-flower-claw.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-flower-claw.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-flower-claw.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-flower-claw.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-flower-claw.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-flower-claw.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-flower-claw.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-flower-claw.jpg'}],
+    desc:'A bright red flower claw clip with a yellow centre — bold, cheerful, and entirely handmade.',
+    details:['Red crochet flower','Yellow centre detail','Claw clip base','Sturdy hold','Made to order'],
+    care:'Spot clean. Keep dry.' },
+  { id:'hair-scrunchie', name:'Crochet Scrunchie', cat:'Hair Accessories', price:499, badge:'',
+    images:['images/hair-scrunchie.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-scrunchie.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-scrunchie.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-scrunchie.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-scrunchie.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-scrunchie.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-scrunchie.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-scrunchie.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-scrunchie.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-scrunchie.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-scrunchie.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-scrunchie.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-scrunchie.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-scrunchie.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-scrunchie.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-scrunchie.jpg'}],
+    desc:'A chunky crochet scrunchie in red with gold ghunghroo bells — traditional charm meets modern hair accessory.',
+    details:['Red chunky crochet','Gold ghunghroo bells','Stretchy elastic band','Approx. 8 cm diameter','Made to order'],
+    care:'Spot clean. Keep dry.' },
+  { id:'hair-floral-hairband', name:'Floral Hairband', cat:'Hair Accessories', price:300, badge:'',
+    images:['images/hair-floral-hairband.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-floral-hairband.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-floral-hairband.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-floral-hairband.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-floral-hairband.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-floral-hairband.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-floral-hairband.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-floral-hairband.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-floral-hairband.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-floral-hairband.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-floral-hairband.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-floral-hairband.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-floral-hairband.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-floral-hairband.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-floral-hairband.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-floral-hairband.jpg'}],
+    desc:'A tie-on hairband with three styles of crochet flowers in pink, blue, and yellow — bohemian, fresh, and handmade.',
+    details:['Pink, blue & yellow flowers','Tie-on green cord','Adjustable fit','Lightweight','Made to order'],
+    care:'Spot clean. Store flat.' },
+  { id:'hair-bow-bandana', name:'Bow Mesh Bandana', cat:'Hair Accessories', price:599, badge:'',
+    images:['images/hair-bow-bandana.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-bow-bandana.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-bow-bandana.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-bow-bandana.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-bow-bandana.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-bow-bandana.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-bow-bandana.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-bow-bandana.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-bow-bandana.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-bow-bandana.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-bow-bandana.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-bow-bandana.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-bow-bandana.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-bow-bandana.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-bow-bandana.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-bow-bandana.jpg'}],
+    desc:'A soft cream and yellow crochet bandana with lace detailing and a tiny bow — romantic, feminine, and perfect for summer.',
+    details:['Cream & yellow tones','Lace crochet pattern','Mini bow detail','Tie-on style','Made to order — 7 days'],
+    care:'Hand wash cold. Air dry flat.' },
+  { id:'hair-flower-bandana', name:'Flower Bandana', cat:'Hair Accessories', price:699, badge:'',
+    images:['images/hair-flower-bandana.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-flower-bandana.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-flower-bandana.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-flower-bandana.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-flower-bandana.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-flower-bandana.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-flower-bandana.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-flower-bandana.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-flower-bandana.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-flower-bandana.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-flower-bandana.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-flower-bandana.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-flower-bandana.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-flower-bandana.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-flower-bandana.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-flower-bandana.jpg'}],
+    desc:'A triangular crochet bandana covered in sunflower granny squares — a boho statement piece for your hair.',
+    details:['Sunflower granny squares','Tie-on style','Cream base with yellow flowers','Approx. 40 cm wide','Made to order — 7–10 days'],
+    care:'Hand wash cold. Air dry flat.' },
+  { id:'hair-tulip-hairband', name:'Tulip Hairband', cat:'Hair Accessories', price:300, badge:'',
+    images:['images/hair-tulip-hairband.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-tulip-hairband.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-tulip-hairband.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-tulip-hairband.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-tulip-hairband.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-tulip-hairband.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-tulip-hairband.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-tulip-hairband.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-tulip-hairband.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-tulip-hairband.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-tulip-hairband.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-tulip-hairband.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-tulip-hairband.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-tulip-hairband.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-tulip-hairband.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-tulip-hairband.jpg'}],
+    desc:'Colourful bobble hairband in multiple shades — pick your favourite colour combination. Stretchy and comfortable to wear all day.',
+    details:['Colourful bobble design','Multiple colour options','Stretchy band','Comfortable fit','Made to order'],
+    care:'Spot clean. Keep dry.' },
+  { id:'hair-antigravity-bow', name:'Anti Gravity Bow', cat:'Hair Accessories', price:100, badge:'Viral',
+    images:['images/hair-antigravity-bow.jpg'],
+    colours:[{name:'Red',hex:'#DC2626',img:'images/hair-antigravity-bow.jpg'},{name:'Pink',hex:'#F472B6',img:'images/hair-antigravity-bow.jpg'},{name:'Light Pink',hex:'#FBCFE8',img:'images/hair-antigravity-bow.jpg'},{name:'Maroon',hex:'#7F1D1D',img:'images/hair-antigravity-bow.jpg'},{name:'Black',hex:'#1C1C1C',img:'images/hair-antigravity-bow.jpg'},{name:'White',hex:'#F5F5F5',img:'images/hair-antigravity-bow.jpg'},{name:'Sky Blue',hex:'#7DD3FC',img:'images/hair-antigravity-bow.jpg'},{name:'Blue',hex:'#3B82F6',img:'images/hair-antigravity-bow.jpg'},{name:'Brown',hex:'#92400E',img:'images/hair-antigravity-bow.jpg'},{name:'Purple',hex:'#7C3AED',img:'images/hair-antigravity-bow.jpg'},{name:'Yellow',hex:'#FACC15',img:'images/hair-antigravity-bow.jpg'},{name:'Pastel Yellow',hex:'#FEF08A',img:'images/hair-antigravity-bow.jpg'},{name:'Orange',hex:'#F97316',img:'images/hair-antigravity-bow.jpg'},{name:'Green',hex:'#16A34A',img:'images/hair-antigravity-bow.jpg'},{name:'Dark Green',hex:'#14532D',img:'images/hair-antigravity-bow.jpg'}],
+    desc:'The trendy anti-gravity crochet bow that stands up on its own — a playful and viral hair accessory everyone is obsessing over.',
+    details:['Self-standing bow shape','Pipe cleaner structure inside','Pink soft yarn','Clip or pin back','Made to order'],
+    care:'Keep the bow shape intact. Spot clean.' },
+
+  // TOYS
+  { id:'toy-bunny', name:'Bunny Plush Toy', cat:'Toys', price:599, badge:'Gift',
+    images:['images/toy-bunny.jpg'],
+    desc:'A handmade amigurumi bunny in cream and soft pink — fully stuffed, huggable, and completely safe. A perfect handcrafted gift for children and adults alike. Every bunny is slightly unique, making it truly one of a kind.',
+    details:['Cream & pink cotton yarn','Fully stuffed with soft filling','Safety eyes','Approx. 18 cm tall','Made to order — 7 days'],
+    care:'Spot clean only. Keep away from prolonged moisture.' },
+];
+
+// ── RENDER ──
+function getParam(key) {
+  return new URLSearchParams(window.location.search).get(key);
+}
+
+function renderProduct() {
+  const id = getParam('id');
+  const product = PRODUCTS.find(p => p.id === id);
+  const main = document.getElementById('main-content');
+
+  if (!product) {
+    main.innerHTML = `
+      <div class="not-found">
+        <div style="font-size:3rem">🧶</div>
+        <h2>Product not found</h2>
+        <p>This piece may have been moved or is no longer available.</p>
+        <a href="products.html" class="btn-primary-sm" style="margin-top:.5rem">Back to Shop</a>
+      </div>`;
+    return;
+  }
+
+  // Update page title
+  document.title = `${product.name} — Doriyana`;
+
+  const thumbs = product.images.map((img, i) => `
+    <button class="thumb-btn ${i===0?'active':''}" onclick="switchImg('${img}', this)">
+      <img src="${img}" alt="${product.name} view ${i+1}">
+    </button>`).join('');
+
+  const details = product.details.map(d => `<li>${d}</li>`).join('');
+
+  main.innerHTML = `
+    <div style="max-width:80rem;margin:0 auto;padding:5.5rem 1.5rem 1.5rem">
+      <nav style="display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--muted-foreground);margin-bottom:2rem">
+        <a href="index.html" style="text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--foreground)'" onmouseout="this.style.color='var(--muted-foreground)'">Home</a>
+        <span>/</span>
+        <a href="products.html" style="text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--foreground)'" onmouseout="this.style.color='var(--muted-foreground)'">Shop</a>
+        <span>/</span>
+        <span style="color:var(--foreground);font-weight:500">${product.name}</span>
+      </nav>
+    </div>
+    <div class="product-detail-wrap">
+      <div class="product-gallery">
+        <div class="main-img-box">
+          <img id="mainImg" src="${product.images[0]}" alt="${product.name}">
+          ${product.badge ? `<span class="main-badge">${product.badge}</span>` : ''}
+          ${product.soldOut ? `<div style="position:absolute;inset:0;background:rgba(44,26,38,.5);display:flex;align-items:center;justify-content:center"><span style="background:white;color:var(--foreground);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.5rem 1.25rem;border-radius:9999px">Sold Out</span></div>` : ''}
+        </div>
+        ${product.images.length > 1 ? `<div class="thumb-row">${thumbs}</div>` : ''}
       </div>
-      <div class="product-info">
-        <h3 class="product-name">${p.name}</h3>
-        <p class="product-desc">${p.desc}</p>
-        <div class="product-footer"><div class="product-prices"><span class="price-main">₹${p.price}</span></div></div>
-        ${p.soldOut
-          ? `<button class="add-to-bag sold-out-btn" disabled onclick="event.stopPropagation()">Sold Out</button>`
-          : `<button class="add-to-bag" onclick="event.stopPropagation();addToCart('${p.name}','Hair Accessories',${p.price},'${p.img}')">Add to Bag</button>`}
+
+      <div class="product-detail-info">
+        <div>
+          <p class="pd-cat">${product.cat}</p>
+          <h1 class="pd-name">${product.name}</h1>
+          <div class="pd-price">₹${product.price.toLocaleString('en-IN')}</div>
+        </div>
+        <div class="pd-divider"></div>
+        ${product.colours ? `
+        <div style="display:flex;flex-direction:column;gap:.875rem">
+          <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Choose Colour: <span id="selectedColourName" style="color:var(--primary)">${product.colours[0].name}</span></p>
+          <div style="display:flex;flex-wrap:wrap;gap:.75rem 1rem">
+            ${product.colours.map((c,i) => `
+              <div style="display:flex;flex-direction:column;align-items:center;gap:.35rem;width:40px">
+                <button onclick="selectColour(this,'${c.img}','${c.name}')"
+                  title="${c.name}"
+                  style="width:32px;height:32px;border-radius:50%;background:${c.hex};border:${i===0?'3px solid var(--foreground)':'2px solid #D1D5DB'};cursor:pointer;transition:border .2s,transform .15s;outline:none;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.15)"
+                  onmouseover="this.style.transform='scale(1.18)'" onmouseout="this.style.transform='scale(1)'">
+                </button>
+                <span style="font-size:.58rem;color:var(--muted-foreground);text-align:center;line-height:1.2;word-break:break-word;width:40px">${c.name}</span>
+              </div>`).join('')}
+          </div>
+        </div>` : ''}
+        <div class="pd-actions">
+          ${product.soldOut
+            ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
+            : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';const img=window._selectedImg||'${product.images[0]}';addToCart('${product.name}'+col,'${product.cat}',${product.price},img);openCart();})()">Add to Bag</button>`}
+          <p class="pd-handmade-note">All pieces are handmade to order by Khushi Verma</p>
+        </div>
+        <div class="pd-divider"></div>
+        <p class="pd-desc">${product.desc}</p>
+        <div class="pd-details">
+          <h3>Details</h3>
+          <ul>${details}</ul>
+        </div>
+        <div class="pd-care">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>${product.care}</span>
+        </div>
+        <a href="products.html" class="pd-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to all pieces
+        </a>
       </div>
     </div>`;
 }
 
-function customizeBanner(cat) {
-  if (!cat.customize) return '';
-  return `<div class="animate-on-scroll" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:1.25rem;overflow:hidden;margin-bottom:.5rem;min-height:180px">
-    <div style="position:relative;overflow:hidden">
-      <img src="${cat.customize.img}" alt="Customize Yours" style="width:100%;height:100%;object-fit:cover;min-height:180px">
-      <div style="position:absolute;inset:0;background:rgba(44,26,38,.35)"></div>
-    </div>
-    <div style="background:var(--primary);padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem">
-      <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.7)">✦ Special for you</span>
-      <h3 style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:white;line-height:1.2">Customize <em style="font-style:italic;font-weight:300">Yours</em></h3>
-      <p style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.65">${cat.customize.text}</p>
-      <a href="https://wa.me/918619697628?text=Hi%20Doriyana!%20I%27d%20like%20to%20customize%20a%20hair%20accessory%20%F0%9F%8E%80" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:white;color:var(--primary);padding:.625rem 1.25rem;border-radius:9999px;font-size:.8rem;font-weight:600;text-decoration:none;width:fit-content;transition:opacity .2s">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Chat on WhatsApp
-      </a>
-    </div>
-  </div>
-  <style>@media(max-width:640px){.customize-grid{grid-template-columns:1fr!important}}</style>`;
+function switchImg(src, btn) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.thumb-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
 }
 
-function comingSoon(title) {
-  return `<div class="coming-soon" style="grid-column:1/-1">
-    <div class="coming-soon-icon">🧶</div>
-    <h3>Coming Soon</h3>
-    <p>We're working on beautiful new ${title} pieces. Check back soon or message us on WhatsApp to pre-order!</p>
-    <a href="https://wa.me/918619697628?text=Hi%20Doriyana!%20I%27d%20like%20to%20know%20more%20about%20your%20${encodeURIComponent(title)}%20collection%20%F0%9F%92%9B" target="_blank" rel="noopener" class="btn-primary-sm" style="margin-top:1rem;display:inline-block">Ask on WhatsApp</a>
-  </div>`;
+function selectColour(btn, imgSrc, colourName) {
+  // Switch main image
+  document.getElementById('mainImg').src = imgSrc;
+  // Reset all colour buttons
+  btn.closest('[style*="flex-wrap:wrap"]').querySelectorAll('button').forEach(b => {
+    b.style.border = '2px solid #D1D5DB';
+  });
+  // Highlight selected
+  btn.style.border = '3px solid var(--foreground)';
+  // Update label
+  const label = document.getElementById('selectedColourName');
+  if (label) label.textContent = colourName;
+  // Store for cart
+  window._selectedColour = colourName;
+  window._selectedImg = imgSrc;
 }
 
-function showCategory(key) {
-  const cat = CATEGORIES[key];
-  if (!cat) return;
-
-  document.getElementById('catViewTitle').innerHTML = cat.title;
-  document.getElementById('catItemsCount').textContent =
-    cat.products.length > 0 ? cat.products.length + ' pieces' : '';
-
-  const grid = document.getElementById('catProductsGrid');
-  const banner = customizeBanner(cat);
-  grid.innerHTML = cat.products.length > 0
-    ? banner + cat.products.map(productCard).join('')
-    : comingSoon(cat.title.replace(/<[^>]*>/g,''));
-
-  document.getElementById('catSection').style.display = 'none';
-  const pv = document.getElementById('productsView');
-  pv.classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-
-  // Animate new cards
-  setTimeout(() => {
-    document.querySelectorAll('#catProductsGrid .animate-on-scroll').forEach(el => el.classList.add('visible'));
-  }, 100);
-}
-
-function showCategories() {
-  document.getElementById('catSection').style.display = 'block';
-  document.getElementById('productsView').classList.remove('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// Check URL param for direct category link
-const urlCat = new URLSearchParams(window.location.search).get('cat');
-if (urlCat && CATEGORIES[urlCat]) showCategory(urlCat);
-
-// Init
+// ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('site-header').classList.add('scrolled');
+  renderProduct();
+
+  // Set default selected colour/image for colour-picker products
+  const _p = PRODUCTS.find(p => p.id === getParam('id'));
+  if (_p && _p.colours && _p.colours.length > 0) {
+    window._selectedColour = _p.colours[0].name;
+    window._selectedImg = _p.colours[0].img;
+  }
+
   document.getElementById('openMenu').addEventListener('click', () => {
     document.getElementById('mobileDrawer').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -425,10 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mobileDrawer').classList.remove('open');
     document.body.style.overflow = '';
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, {threshold:0.1});
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 });
 </script>
 </body>
