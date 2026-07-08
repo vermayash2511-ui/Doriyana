@@ -180,7 +180,7 @@
       <div class="cat-overlay"></div>
       <div class="cat-label">
         <span class="cat-name">Blankets</span>
-        <span class="cat-count">Coming soon</span>
+        <span class="cat-count">2 designs</span>
       </div>
     </div>
 
@@ -309,7 +309,10 @@ const CATEGORIES = {
   },
   blankets: {
     title: 'Blankets',
-    products: []
+    products: [
+      { id:'blanket-sunflower', name:'Sunflower Bouquet Blanket', badge:'New', img:'images/blanket-sunflower.jpg', desc:'A dreamy white blanket blooming with handcrafted sunflowers along the edge.', hasSizes:true },
+      { id:'blanket-wisteria', name:'Wisteria Bouquet Blanket', badge:'New', img:'images/blanket-wisteria.jpg', desc:'A cascading wisteria bouquet in blush and cream, crocheted onto a soft base.', hasSizes:true },
+    ]
   },
   flowers: {
     title: 'Flowers',
@@ -331,6 +334,17 @@ const CATEGORIES = {
 };
 
 function productCard(p) {
+  const priceHtml = p.hasSizes
+    ? `<span class="price-main">Select size</span>`
+    : `<span class="price-main">₹${p.price}</span>`;
+  let btnHtml;
+  if (p.soldOut) {
+    btnHtml = `<button class="add-to-bag sold-out-btn" disabled onclick="event.stopPropagation()">Sold Out</button>`;
+  } else if (p.hasSizes) {
+    btnHtml = `<button class="add-to-bag" onclick="event.stopPropagation();window.location='product.html?id=${p.id}'">Select Size</button>`;
+  } else {
+    btnHtml = `<button class="add-to-bag" onclick="event.stopPropagation();addToCart('${p.name}','Hair Accessories',${p.price},'${p.img}')">Add to Bag</button>`;
+  }
   return `
     <div class="product-card animate-on-scroll" style="cursor:pointer" onclick="event.stopPropagation();window.location='product.html?id=${p.id}'">
       <div class="product-img-wrap">
@@ -341,10 +355,8 @@ function productCard(p) {
       <div class="product-info">
         <h3 class="product-name">${p.name}</h3>
         <p class="product-desc">${p.desc}</p>
-        <div class="product-footer"><div class="product-prices"><span class="price-main">₹${p.price}</span></div></div>
-        ${p.soldOut
-          ? `<button class="add-to-bag sold-out-btn" disabled onclick="event.stopPropagation()">Sold Out</button>`
-          : `<button class="add-to-bag" onclick="event.stopPropagation();addToCart('${p.name}','Hair Accessories',${p.price},'${p.img}')">Add to Bag</button>`}
+        <div class="product-footer"><div class="product-prices">${priceHtml}</div></div>
+        ${btnHtml}
       </div>
     </div>`;
 }
