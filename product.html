@@ -368,6 +368,20 @@ const PRODUCTS = [
     desc:'A handmade amigurumi bunny in cream and soft pink — fully stuffed, huggable, and completely safe. A perfect handcrafted gift for children and adults alike. Every bunny is slightly unique, making it truly one of a kind.',
     details:['Cream & pink cotton yarn','Fully stuffed with soft filling','Safety eyes','Approx. 18 cm tall','Made to order — 7 days'],
     care:'Spot clean only. Keep away from prolonged moisture.' },
+
+  // BLANKETS
+  { id:'blanket-sunflower', name:'Sunflower Bouquet Blanket', cat:'Blankets', badge:'New',
+    images:['images/blanket-sunflower.jpg'],
+    sizes:[{label:'20 inches',price:1999},{label:'30 inches',price:2999},{label:'40 inches',price:3999},{label:'50 inches',price:4999}],
+    desc:'A dreamy white crochet blanket blooming with handcrafted sunflowers along the edge — warm, textured, and made entirely by hand. Each sunflower is individually crocheted and stitched on, so no two blankets are ever quite the same.',
+    details:['Handcrafted sunflower trim','Soft ribbed white base','Available in 4 sizes','Made to order','Ships in 10–14 days'],
+    care:'Hand wash cold. Air dry flat. Do not wring.' },
+  { id:'blanket-wisteria', name:'Wisteria Bouquet Blanket', cat:'Blankets', badge:'New',
+    images:['images/blanket-wisteria.jpg'],
+    sizes:[{label:'20 inches',price:1999},{label:'30 inches',price:2999},{label:'40 inches',price:3999},{label:'50 inches',price:4999}],
+    desc:'A cascading wisteria bouquet in blush pink, rose and cream, crocheted strand by strand onto a soft ribbed base. A romantic, textural statement piece for any room.',
+    details:['Trailing wisteria strands in pink tones','Soft ribbed base','Available in 4 sizes','Made to order','Ships in 10–14 days'],
+    care:'Hand wash cold. Air dry flat. Do not wring.' },
 ];
 
 // ── RENDER ──
@@ -425,7 +439,7 @@ function renderProduct() {
         <div>
           <p class="pd-cat">${product.cat}</p>
           <h1 class="pd-name">${product.name}</h1>
-          <div class="pd-price">₹${product.price.toLocaleString('en-IN')}</div>
+          <div class="pd-price" id="pdPrice">${product.sizes ? 'Select a size' : '₹'+product.price.toLocaleString('en-IN')}</div>
         </div>
         <div class="pd-divider"></div>
         ${product.colours ? `
@@ -443,9 +457,19 @@ function renderProduct() {
               </div>`).join('')}
           </div>
         </div>` : ''}
+        ${product.sizes ? `
+        <div style="display:flex;flex-direction:column;gap:.625rem">
+          <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Select Size</p>
+          <select id="sizeSelect" onchange="selectSize(this.value)" style="width:100%;padding:.85rem 1rem;border-radius:.75rem;border:1px solid var(--border);font-size:.9rem;font-family:var(--font-sans);background:var(--card);color:var(--foreground);cursor:pointer">
+            <option value="" disabled selected>Choose a size</option>
+            ${product.sizes.map((s,i) => `<option value="${i}">${s.label} — ₹${s.price.toLocaleString('en-IN')}</option>`).join('')}
+          </select>
+        </div>` : ''}
         <div class="pd-actions">
           ${product.soldOut
             ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
+            : product.sizes
+              ? `<button class="pd-add-btn" id="pdAddBtn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none" onclick="(function(){if(!window._selectedSize)return;addToCart('${product.name} — '+window._selectedSize.label,'${product.cat}',window._selectedSize.price,'${product.images[0]}');openCart();})()">Select a size to add to bag</button>`
             : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';const img=window._selectedImg||'${product.images[0]}';addToCart('${product.name}'+col,'${product.cat}',${product.price},img);openCart();})()">Add to Bag</button>`}
           <p class="pd-handmade-note">All pieces are handmade to order by Khushi Verma</p>
         </div>
@@ -488,6 +512,26 @@ function selectColour(btn, imgSrc, colourName) {
   // Store for cart
   window._selectedColour = colourName;
   window._selectedImg = imgSrc;
+}
+
+function selectSize(index) {
+  const id = getParam('id');
+  const product = PRODUCTS.find(p => p.id === id);
+  if (!product || !product.sizes || index === '') return;
+  const size = product.sizes[Number(index)];
+  window._selectedSize = size;
+
+  const priceEl = document.getElementById('pdPrice');
+  if (priceEl) priceEl.textContent = '₹' + size.price.toLocaleString('en-IN');
+
+  const btn = document.getElementById('pdAddBtn');
+  if (btn) {
+    btn.disabled = false;
+    btn.style.background = 'var(--primary)';
+    btn.style.color = 'white';
+    btn.style.cursor = 'pointer';
+    btn.textContent = 'Add to Bag — ₹' + size.price.toLocaleString('en-IN');
+  }
 }
 
 // ── INIT ──
