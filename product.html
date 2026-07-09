@@ -382,6 +382,20 @@ const PRODUCTS = [
     desc:'A cascading wisteria bouquet in blush pink, rose and cream, crocheted strand by strand onto a soft ribbed base. A romantic, textural statement piece for any room.',
     details:['Trailing wisteria strands in pink tones','Soft ribbed base','Available in 4 sizes','Made to order','Ships in 10–14 days'],
     care:'Hand wash cold. Air dry flat. Do not wring.' },
+  { id:'blanket-lily', name:'Lily of the Valley Bouquet Blanket', cat:'Blankets', badge:'New',
+    images:['images/blanket-lily.jpg'],
+    sizes:[{label:'20 inches',price:1600},{label:'30 inches',price:2400},{label:'40 inches',price:3200},{label:'50 inches',price:3999}],
+    colours:['Red','Pink','Blue','Purple','Baby Pink','White','Yellow','Pastel Yellow','Sky Blue'],
+    desc:'A dreamy cream blanket adorned with handcrafted lily of the valley blooms along the edge — delicate, romantic, and made entirely by hand. Each tiny flower is individually crocheted and stitched on.',
+    details:['Handcrafted lily of the valley trim','Soft cream ribbed base','Available in 9 colours','Available in 4 sizes','Made to order','Ships in 10–14 days'],
+    care:'Hand wash cold. Air dry flat. Do not wring.' },
+  { id:'blanket-rose', name:'Rose Bouquet Blanket', cat:'Blankets', badge:'New',
+    images:['images/blanket-rose.jpg'],
+    sizes:[{label:'20 inches',price:1600},{label:'30 inches',price:2400},{label:'40 inches',price:3200},{label:'50 inches',price:3999}],
+    colours:['Red','Pink','Blue','Purple','Baby Pink','White','Yellow','Pastel Yellow','Sky Blue'],
+    desc:'A soft cream blanket clustered with handcrafted rose buds and green leaves — rich, textured, and completely handmade. A timeless piece that works as a gift or a keepsake.',
+    details:['Handcrafted rose bud trim with leaf detail','Soft cream ribbed base','Available in 9 colours','Available in 4 sizes','Made to order','Ships in 10–14 days'],
+    care:'Hand wash cold. Air dry flat. Do not wring.' },
 ];
 
 // ── RENDER ──
@@ -444,17 +458,22 @@ function renderProduct() {
         <div class="pd-divider"></div>
         ${product.colours ? `
         <div style="display:flex;flex-direction:column;gap:.875rem">
-          <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Choose Colour: <span id="selectedColourName" style="color:var(--primary)">${product.colours[0].name}</span></p>
+          <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Choose Colour: <span id="selectedColourName" style="color:var(--primary)">${typeof product.colours[0]==='string' ? product.colours[0] : product.colours[0].name}</span></p>
           <div style="display:flex;flex-wrap:wrap;gap:.75rem 1rem">
-            ${product.colours.map((c,i) => `
-              <div style="display:flex;flex-direction:column;align-items:center;gap:.35rem;width:40px">
-                <button onclick="selectColour(this,'${c.img}','${c.name}')"
-                  title="${c.name}"
-                  style="width:32px;height:32px;border-radius:50%;background:${c.hex};border:${i===0?'3px solid var(--foreground)':'2px solid #D1D5DB'};cursor:pointer;transition:border .2s,transform .15s;outline:none;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.15)"
+            ${product.colours.map((c,i) => {
+              const isStr = typeof c === 'string';
+              const name = isStr ? c : c.name;
+              const hex = isStr ? colourHex(c) : c.hex;
+              const img = isStr ? '' : c.img;
+              return `<div style="display:flex;flex-direction:column;align-items:center;gap:.35rem;width:40px">
+                <button onclick="selectColour(this,'${img}','${name}')"
+                  title="${name}"
+                  style="width:32px;height:32px;border-radius:50%;background:${hex};border:${i===0?'3px solid var(--foreground)':'2px solid #D1D5DB'};cursor:pointer;transition:border .2s,transform .15s;outline:none;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.15)"
                   onmouseover="this.style.transform='scale(1.18)'" onmouseout="this.style.transform='scale(1)'">
                 </button>
-                <span style="font-size:.58rem;color:var(--muted-foreground);text-align:center;line-height:1.2;word-break:break-word;width:40px">${c.name}</span>
-              </div>`).join('')}
+                <span style="font-size:.58rem;color:var(--muted-foreground);text-align:center;line-height:1.2;word-break:break-word;width:40px">${name}</span>
+              </div>`;
+            }).join('')}
           </div>
         </div>` : ''}
         ${product.sizes ? `
@@ -469,7 +488,7 @@ function renderProduct() {
           ${product.soldOut
             ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
             : product.sizes
-              ? `<button class="pd-add-btn" id="pdAddBtn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none" onclick="(function(){if(!window._selectedSize)return;addToCart('${product.name} — '+window._selectedSize.label,'${product.cat}',window._selectedSize.price,'${product.images[0]}');openCart();})()">Select a size to add to bag</button>`
+              ? `<button class="pd-add-btn" id="pdAddBtn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none" onclick="(function(){if(!window._selectedSize)return;const col=window._selectedColour?' — '+window._selectedColour:'';addToCart('${product.name}'+col+' — '+window._selectedSize.label,'${product.cat}',window._selectedSize.price,'${product.images[0]}');openCart();})()">Select a size to add to bag</button>`
             : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';const img=window._selectedImg||'${product.images[0]}';addToCart('${product.name}'+col,'${product.cat}',${product.price},img);openCart();})()">Add to Bag</button>`}
           <p class="pd-handmade-note">All pieces are handmade to order by Khushi Verma</p>
         </div>
@@ -497,9 +516,21 @@ function switchImg(src, btn) {
   btn.classList.add('active');
 }
 
+function colourHex(name) {
+  const map = {
+    'Red':'#e63946','Pink':'#f48fb1','Blue':'#4a90d9','Purple':'#9b59b6',
+    'Baby Pink':'#f9c6d0','White':'#f5f5f5','Yellow':'#f9d423',
+    'Pastel Yellow':'#f7f0a0','Sky Blue':'#87ceeb'
+  };
+  return map[name] || '#ccc';
+}
+
 function selectColour(btn, imgSrc, colourName) {
-  // Switch main image
-  document.getElementById('mainImg').src = imgSrc;
+  // Switch main image only if a real image path is provided
+  if (imgSrc) {
+    document.getElementById('mainImg').src = imgSrc;
+    window._selectedImg = imgSrc;
+  }
   // Reset all colour buttons
   btn.closest('[style*="flex-wrap:wrap"]').querySelectorAll('button').forEach(b => {
     b.style.border = '2px solid #D1D5DB';
@@ -511,7 +542,6 @@ function selectColour(btn, imgSrc, colourName) {
   if (label) label.textContent = colourName;
   // Store for cart
   window._selectedColour = colourName;
-  window._selectedImg = imgSrc;
 }
 
 function selectSize(index) {
@@ -542,8 +572,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set default selected colour/image for colour-picker products
   const _p = PRODUCTS.find(p => p.id === getParam('id'));
   if (_p && _p.colours && _p.colours.length > 0) {
-    window._selectedColour = _p.colours[0].name;
-    window._selectedImg = _p.colours[0].img;
+    const first = _p.colours[0];
+    window._selectedColour = typeof first === 'string' ? first : first.name;
+    window._selectedImg = typeof first === 'string' ? '' : first.img;
   }
 
   document.getElementById('openMenu').addEventListener('click', () => {
