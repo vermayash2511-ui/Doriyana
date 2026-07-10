@@ -196,16 +196,19 @@ const PRODUCTS = [
   // BAGS
   { id:'bag-rosepotli', name:'Rose Garden Potli', cat:'Bags', price:1700, badge:'New',
     images:['images/bag-rosepotli-1.jpg','images/bag-rosepotli-2.jpg'],
+    colours:['Black','White'],
     desc:'A dreamy cream potli bag crowned with handcrafted red roses and a dark green drawstring — handmade and utterly romantic. Every rose is individually crocheted and stitched on, making each potli truly one of a kind. Light enough for evenings out, special enough for gifting.',
     details:['Cream cotton yarn base','Handcrafted red rose trim','Dark green drawstring closure','Long crossbody strap','Approx. 18 × 15 cm','Made to order — 7–10 days'],
     care:'Spot clean only. Keep away from moisture.' },
   { id:'bag-grannytote', name:'Granny Square Tote Bag', cat:'Bags', price:1200, badge:'New',
     images:['images/bag-grannytote-1.jpg','images/bag-grannytote-2.jpg'],
+    colours:['Pink','Blue','Green','Yellow','Black','Red','Brown'],
     desc:'A breezy granny-square tote in navy, sky blue and cream — lightweight, structured, and made entirely by hand. The open-top design makes it easy to dip in and out, and the wide cream strap sits comfortably on the shoulder. A casual everyday bag with a lot of character.',
     details:['Navy, sky blue & cream cotton yarn','Granny square pattern','Wide cream shoulder strap','Open top','Approx. 30 × 25 cm','Made to order — 7–10 days'],
     care:'Hand wash cold. Air dry flat.' },
   { id:'bag-grannyback', name:'Granny Square Backpack', cat:'Bags', price:1999, badge:'New',
     images:['images/bag-grannyback-1.jpg','images/bag-grannyback-2.jpg'],
+    colours:['Purple','Pink','Blue','Green','Yellow','White','Black','Red','Brown'],
     desc:'A chunky granny-square backpack with adjustable straps — available in sunflower and daisy styles. Roomy enough for daily essentials with a flap-over front pocket and a drawstring-style closure. A head-turning piece that\'s as functional as it is beautiful.',
     details:['Granny square construction','Flap-over front pocket','Adjustable backpack straps','Available in sunflower & daisy styles','Approx. 28 × 32 cm','Made to order — 10–14 days'],
     care:'Hand wash cold. Air dry in shade.' },
@@ -222,11 +225,13 @@ const PRODUCTS = [
 
   { id:'bag-classicrose', name:'Classic Rose Sling Bag', cat:'Bags', price:1500, badge:'New',
     images:['images/bag-classicrose-1.jpg','images/bag-classicrose-2.jpg','images/bag-classicrose-3.jpg'],
+    colours:['Red','Pink','Light Pink','Maroon','Black','White','Sky Blue','Blue','Yellow','Orange','Green'],
     desc:'A sculptural rose-shaped sling bag — handcrocheted petal by petal into a full bloom. Available with a gold chain strap or a pearl bead handle, in deep red or soft cream. Each bag is a wearable artwork that goes from casual afternoons to festive evenings.',
     details:['Full rose sculpture in cotton yarn','Available: red with chain / cream with pearl handle','Zip closure inside','Approx. 20 cm diameter','Made to order — 10–14 days'],
     care:'Spot clean only. Store stuffed to hold shape.' },
   { id:'bag-bubble', name:'Bubble Bag', cat:'Bags', price:1200, badge:'New',
     images:['images/bag-bubble.jpg'],
+    colours:['Red','Pink','Light Pink','Maroon','Black','White','Sky Blue','Blue','Yellow','Orange','Green'],
     desc:'A chunky bubble-stitch shoulder bag with a sweet cherry charm dangling from the handle — textured, playful, and impossible to miss. The bobble stitches give it a satisfying 3D feel, and the top-handle silhouette keeps it looking polished.',
     details:['Bubble/bobble stitch cotton yarn','Cherry charm on handle','Top handle carry','Approx. 28 × 20 cm','Made to order — 7–10 days'],
     care:'Hand wash cold. Air dry flat.' },
@@ -636,7 +641,9 @@ function colourHex(name) {
   const map = {
     'Red':'#e63946','Pink':'#f48fb1','Blue':'#4a90d9','Purple':'#9b59b6',
     'Baby Pink':'#f9c6d0','White':'#f5f5f5','Yellow':'#f9d423',
-    'Pastel Yellow':'#f7f0a0','Sky Blue':'#87ceeb'
+    'Pastel Yellow':'#f7f0a0','Sky Blue':'#87ceeb',
+    'Black':'#222222','Green':'#4caf50','Brown':'#795548',
+    'Light Pink':'#ffb3c1','Maroon':'#800000','Orange':'#ff6f00'
   };
   return map[name] || '#ccc';
 }
