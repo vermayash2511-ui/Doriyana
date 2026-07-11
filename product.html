@@ -275,6 +275,7 @@ const PRODUCTS = [
     care:'Spot clean gently. Air dry flat.' },
   { id:'bag-maybells', name:'Maybells Mini Potli', cat:'Bags', price:499, badge:'New',
     images:['images/bag-maybells.jpg'],
+    colours:['White','Off White'],
     desc:'A cream lace-work potli crowned with soft pink hydrangea blooms and tied with a green drawstring — delicate, cottagecore, and completely gift-ready. Small enough to carry as an evening pouch, pretty enough to display.',
     details:['Cream lace-work base','Pink hydrangea bloom trim','Green drawstring with floral ends','Approx. 12 × 12 cm','Made to order — 5–7 days'],
     care:'Spot clean only. Keep away from moisture.' },
@@ -285,12 +286,14 @@ const PRODUCTS = [
     care:'Spot clean only.' },
   { id:'bag-lipbalm', name:'Daisy Lip Balm Holder', cat:'Bags', price:150, badge:'New',
     images:['images/bag-lipbalm.jpg'],
+    colours:['Pink','Blue','Green','Red','Yellow','Orange','Purple','Black','Maroon'],
     desc:'A crocheted lip balm holder with a daisy or fluffy top — fits standard lip balm sticks perfectly, with a hanging loop to clip on your bag, backpack, or lanyard. Available in pink and blue.',
     details:['Fits standard lip balm sticks','Daisy or fluffy top style','Hanging loop included','Available in pink & blue','Handmade to order — 3–5 days'],
     care:'Keep away from moisture.' },
 
   { id:'bag-charminglip', name:'Charming Lip Balm Holder', cat:'Bags', price:450, badge:'New',
     images:['images/bag-charminglip-1.jpg','images/bag-charminglip-2.jpg'],
+    flavours:['Litchi','Sunflower','Lemon','Strawberry','Rose'],
     desc:'A striped red-and-white or red-and-pink lip balm keychain holder with a crocheted cupcake or strawberry charm — cute, functional, and made entirely by hand. Fits standard lip balm sticks and attaches to any bag or keyring.',
     details:['Striped cotton yarn holder','Cupcake or strawberry charm','Metal keyring included','Fits standard lip balm','Handmade to order — 3–5 days'],
     care:'Keep away from moisture.' },
@@ -306,6 +309,7 @@ const PRODUCTS = [
     care:'Spot clean only.' },
   { id:'bag-floralpouch', name:'Floral Pouch', cat:'Bags', price:199, badge:'New',
     images:['images/bag-floralpouch.jpg'],
+    colours:['Pink','Purple','Yellow','Red','White','Black','Blue','Sky Blue','Light Pink','Maroon','Green'],
     desc:'A flower-shaped crochet pouch that opens up like a bloom — in hot pink or soft purple with a cream centre. Sized to hold earbuds, coins, or small daily essentials. Available in multiple colours.',
     details:['Flower silhouette shape','Opens to hold essentials','Available in pink & purple','Hanging loop included','Approx. 8 cm diameter','Handmade to order — 3–5 days'],
     care:'Spot clean gently.' },
@@ -604,6 +608,17 @@ function renderProduct() {
             }).join('')}
           </div>
         </div>` : ''}
+        ${product.flavours ? `
+        <div style="display:flex;flex-direction:column;gap:.875rem">
+          <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Choose Flavour: <span id="selectedColourName" style="color:var(--primary)">${product.flavours[0]}</span></p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+            ${product.flavours.map((f,i) => `
+              <button onclick="selectFlavour(this,'${f}')"
+                style="padding:.45rem 1rem;border-radius:9999px;border:${i===0?'2px solid var(--primary)':'1.5px solid var(--border)'};background:${i===0?'var(--primary)':'transparent'};color:${i===0?'white':'var(--foreground)'};font-size:.8rem;font-family:var(--font-sans);cursor:pointer;transition:all .2s">
+                ${f}
+              </button>`).join('')}
+          </div>
+        </div>` : ''}
         ${product.sizes ? `
         <div style="display:flex;flex-direction:column;gap:.625rem">
           <p style="font-size:.78rem;font-weight:600;color:var(--foreground);text-transform:uppercase;letter-spacing:.1em">Select Size</p>
@@ -650,9 +665,25 @@ function colourHex(name) {
     'Baby Pink':'#f9c6d0','White':'#f5f5f5','Yellow':'#f9d423',
     'Pastel Yellow':'#f7f0a0','Sky Blue':'#87ceeb',
     'Black':'#222222','Green':'#4caf50','Brown':'#795548',
-    'Light Pink':'#ffb3c1','Maroon':'#800000','Orange':'#ff6f00'
+    'Light Pink':'#ffb3c1','Maroon':'#800000','Orange':'#ff6f00',
+    'Off White':'#f0ece3'
   };
   return map[name] || '#ccc';
+}
+
+function selectFlavour(btn, flavourName) {
+  // Reset all flavour buttons
+  btn.closest('[style*="flex-wrap:wrap"]').querySelectorAll('button').forEach(b => {
+    b.style.border = '1.5px solid var(--border)';
+    b.style.background = 'transparent';
+    b.style.color = 'var(--foreground)';
+  });
+  btn.style.border = '2px solid var(--primary)';
+  btn.style.background = 'var(--primary)';
+  btn.style.color = 'white';
+  const label = document.getElementById('selectedColourName');
+  if (label) label.textContent = flavourName;
+  window._selectedColour = flavourName;
 }
 
 function selectColour(btn, imgSrc, colourName) {
@@ -705,6 +736,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const first = _p.colours[0];
     window._selectedColour = typeof first === 'string' ? first : first.name;
     window._selectedImg = typeof first === 'string' ? '' : first.img;
+  }
+  if (_p && _p.flavours && _p.flavours.length > 0) {
+    window._selectedColour = _p.flavours[0];
   }
 
   document.getElementById('openMenu').addEventListener('click', () => {
