@@ -198,7 +198,7 @@
       <div class="cat-overlay"></div>
       <div class="cat-label">
         <span class="cat-name">Crochet Couple</span>
-        <span class="cat-count">Custom dolls</span>
+        <span class="cat-count">4 designs</span>
       </div>
     </div>
 
@@ -351,7 +351,13 @@ const CATEGORIES = {
   },
   couple: {
     title: 'Crochet <em>Couple</em>',
-    products: []
+    customize: { img:'images/couple-customize.jpg', text:'Every doll is made just for you — your outfits, your features, your story. Tap below to tell us about your special someone and we\'ll bring them to life, stitch by stitch.', waText:'Hi Doriyana! I\'d like to order a custom crochet couple doll 🪆' },
+    products: [
+      { id:'couple-nikah', name:'Nikah Couple Doll', badge:'Bestseller', img:'images/couple-nikah.jpg', desc:'Bride in pink lehenga with dupatta, groom in cream sherwani — fully customisable to your outfit and features.', whatsappOnly:true },
+      { id:'couple-wedding', name:'Wedding Couple Doll', badge:'New', img:'images/couple-wedding.jpg', desc:'Rich red bridal lehenga, groom with turban and floral garland — every detail handcrafted to order.', whatsappOnly:true },
+      { id:'couple-anniversary', name:'Anniversary Couple Doll', badge:'Gift', img:'images/couple-anniversary.jpg', desc:'Sweet everyday couple on a personalised ESTD base — a perfect anniversary or wedding gift.', whatsappOnly:true },
+      { id:'couple-family', name:'Family Doll Set', badge:'New', img:'images/couple-family.jpg', desc:'Couple plus children — each figure hand-sculpted with custom outfits, hair and features.', whatsappOnly:true },
+    ]
   },
   baby: {
     title: 'Baby <em>Collection</em>',
@@ -360,19 +366,25 @@ const CATEGORIES = {
 };
 
 function productCard(p) {
-  const priceHtml = p.hasSizes
-    ? `<span class="price-main">Select size</span>`
-    : `<span class="price-main">₹${p.price}</span>`;
+  const waMsg = encodeURIComponent(`Hi Doriyana! I'm interested in the ${p.name} 🪆 Could you share more details and pricing?`);
+  const waUrl = `https://wa.me/918619697628?text=${waMsg}`;
+  const priceHtml = p.whatsappOnly
+    ? `<span class="price-main" style="font-size:.8rem;color:var(--muted-foreground)">Price on request</span>`
+    : p.hasSizes
+      ? `<span class="price-main">Select size</span>`
+      : `<span class="price-main">₹${p.price}</span>`;
   let btnHtml;
   if (p.soldOut) {
     btnHtml = `<button class="add-to-bag sold-out-btn" disabled onclick="event.stopPropagation()">Sold Out</button>`;
+  } else if (p.whatsappOnly) {
+    btnHtml = `<a class="add-to-bag" href="${waUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="display:block;text-align:center;text-decoration:none">Enquire on WhatsApp</a>`;
   } else if (p.hasSizes) {
     btnHtml = `<button class="add-to-bag" onclick="event.stopPropagation();window.location='product.html?id=${p.id}'">Select Size</button>`;
   } else {
     btnHtml = `<button class="add-to-bag" onclick="event.stopPropagation();addToCart('${p.name}','Hair Accessories',${p.price},'${p.img}')">Add to Bag</button>`;
   }
   return `
-    <div class="product-card animate-on-scroll" style="cursor:pointer" onclick="event.stopPropagation();window.location='product.html?id=${p.id}'">
+    <div class="product-card animate-on-scroll" style="cursor:pointer" onclick="event.stopPropagation();${p.whatsappOnly ? `window.open('${waUrl}','_blank')` : `window.location='product.html?id=${p.id}'`}">
       <div class="product-img-wrap">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
         ${p.badge ? `<span class="product-pill">${p.badge}</span>` : ''}
