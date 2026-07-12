@@ -211,6 +211,24 @@
       </div>
     </div>
 
+    <div class="cat-card" onclick="showCategory('forhim')">
+      <img src="images/cat-forhim.jpg" alt="For Him">
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <span class="cat-name">For Him</span>
+        <span class="cat-count">Gift ideas</span>
+      </div>
+    </div>
+
+    <div class="cat-card" onclick="showCategory('sacred')">
+      <img src="images/cat-sacred.jpg" alt="Sacred Corner">
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <span class="cat-name">Sacred Corner</span>
+        <span class="cat-count">Home decor</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -362,6 +380,20 @@ const CATEGORIES = {
   baby: {
     title: 'Baby <em>Collection</em>',
     products: []
+  },
+  forhim: {
+    title: 'For <em>Him</em>',
+    customize: { img:'images/cat-forhim.jpg', text:'Looking for a handmade gift for the special man in your life? We make custom crochet pieces for him too — from character plushies to personalized keychains.', waText:'Hi Doriyana! I\'d like to order something from the For Him collection 🎁' },
+    products: [
+      { id:'forhim-spiderman', name:'Spider-Man Plushie', cat:'For Him', price:799, badge:'Fan Fav', img:'images/forhim-spiderman.jpg', desc:'A chunky amigurumi Spider-Man in red and blue with embroidered spider logo and felt eyes — handcrafted and fully stuffed. A perfect gift for the superhero fan in your life.' },
+    ]
+  },
+  sacred: {
+    title: 'Sacred <em>Corner</em>',
+    customize: { img:'images/cat-sacred.jpg', text:'Want something made just for your sacred space? We craft custom crochet pieces for your home altar, pooja corner, or gifting needs — share your idea and we\'ll bring it to life.', waText:'Hi Doriyana! I\'d like to order something for my sacred corner 🪷' },
+    products: [
+      { id:'sacred-bow', name:'Sacred Bow Decor', cat:'Sacred Corner', price:599, badge:'New', img:'images/sacred-bow.jpg', desc:'A richly crocheted bow in deep maroon and cream — handcrafted with intricate stripe detailing and wooden bead accents. A beautiful decorative piece for your pooja corner or home altar.' },
+    ]
   },
 };
 
