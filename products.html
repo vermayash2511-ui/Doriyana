@@ -397,6 +397,19 @@ const CATEGORIES = {
   },
 };
 
+function sampleCard(p) {
+  const waMsg = encodeURIComponent(`Hi Doriyana! I love this design and would like to enquire about a custom crochet couple doll 🪆`);
+  const waUrl = `https://wa.me/918619697628?text=${waMsg}`;
+  return `
+    <div class="animate-on-scroll" style="border-radius:1.25rem;overflow:hidden;cursor:pointer;position:relative;aspect-ratio:3/4;background:var(--secondary)" onclick="window.open('${waUrl}','_blank')">
+      <img src="${p.img}" alt="Sample" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .6s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(44,26,38,.75) 0%,rgba(44,26,38,.05) 50%,transparent 100%)"></div>
+      <div style="position:absolute;bottom:1rem;left:1rem;right:1rem">
+        <a href="${waUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="add-to-bag" style="display:block;text-align:center;text-decoration:none;background:white;color:var(--primary)">Enquire on WhatsApp</a>
+      </div>
+    </div>`;
+}
+
 function productCard(p) {
   const waMsg = encodeURIComponent(`Hi Doriyana! I'm interested in the ${p.name} 🪆 Could you share more details and pricing?`);
   const waUrl = `https://wa.me/918619697628?text=${waMsg}`;
@@ -471,7 +484,7 @@ function showCategory(key) {
   const grid = document.getElementById('catProductsGrid');
   const banner = customizeBanner(cat);
   grid.innerHTML = cat.products.length > 0
-    ? banner + cat.products.map(productCard).join('')
+    ? banner + cat.products.map(p => p.whatsappOnly ? sampleCard(p) : productCard(p)).join('')
     : comingSoon(cat.title.replace(/<[^>]*>/g,''));
 
   document.getElementById('catSection').style.display = 'none';
