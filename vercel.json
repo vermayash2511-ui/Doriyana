@@ -1,9 +1,0 @@
-{
-  "outputDirectory": ".",
-  "functions": {
-    "api/create-order.js": {
-      "memory": 128,
-      "maxDuration": 10
-    }
-  }
-}
