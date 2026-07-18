@@ -1,0 +1,8 @@
+{
+  "outputDirectory": ".",
+  "functions": {
+    "api/create-order.js": {
+      "maxDuration": 10
+    }
+  }
+}
