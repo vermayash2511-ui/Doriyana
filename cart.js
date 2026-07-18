@@ -257,6 +257,13 @@ async function handlePayment() {
     const data = await res.json();
     if (!data.orderId) throw new Error('No order ID');
 
+    // Save all details BEFORE opening Razorpay (DOM may change after)
+    const orderDetails = { name, phone, address, city, pin, state };
+    const orderCart = JSON.parse(JSON.stringify(cart)); // deep copy
+    const orderTotal = total;
+    const orderShipping = getShipping();
+    const orderSubtotal = getSubtotal();
+
     // Open Razorpay
     const options = {
       key: RAZORPAY_KEY_ID,
@@ -280,14 +287,13 @@ async function handlePayment() {
       },
       theme: { color: '#5A2050' },
       handler: function(response) {
-        // Payment successful
-        const lines = cart.map(i => `• ${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString('en-IN')}`).join('\n');
-        const shipping = getShipping();
+        const lines = orderCart.map(i => `• ${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString('en-IN')}`).join('\n');
         const msg = encodeURIComponent(
-          `Hi Khushi! 🌸 New order from Doriyana:\n\n${lines}\n\nSubtotal: ₹${getSubtotal().toLocaleString('en-IN')}\nShipping: ${shipping === 0 ? 'FREE' : '₹' + shipping}\nTotal: ₹${total.toLocaleString('en-IN')}\n\nDelivery to:\n${name}\n${address}, ${city}, ${state} - ${pin}\nPhone: ${phone}\n\nPayment ID: ${response.razorpay_payment_id}`
+          `Hi Khushi! 🌸 New order from Doriyana:\n\n${lines}\n\nSubtotal: ₹${orderSubtotal.toLocaleString('en-IN')}\nShipping: ${orderShipping === 0 ? 'FREE' : '₹' + orderShipping}\nTotal: ₹${orderTotal.toLocaleString('en-IN')}\n\nDelivery to:\n${orderDetails.name}\n${orderDetails.address}, ${orderDetails.city}, ${orderDetails.state} - ${orderDetails.pin}\nPhone: ${orderDetails.phone}\n\nPayment ID: ${response.razorpay_payment_id}`
         );
         window.open(`https://wa.me/918619697628?text=${msg}`, '_blank');
         cart = [];
+        saveCart();
         saveCart();
         showCartView('success');
       },
