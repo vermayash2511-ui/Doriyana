@@ -1,7 +1,5 @@
 {
   "name": "doriyana",
   "version": "1.0.0",
-  "dependencies": {
-    "razorpay": "^2.9.2"
-  }
+  "private": true
 }
