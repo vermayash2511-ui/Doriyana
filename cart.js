@@ -288,10 +288,20 @@ async function handlePayment() {
       theme: { color: '#5A2050' },
       handler: function(response) {
         const lines = orderCart.map(i => `• ${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString('en-IN')}`).join('\n');
-        const msg = encodeURIComponent(
-          `Hi Khushi! 🌸 New order from Doriyana:\n\n${lines}\n\nSubtotal: ₹${orderSubtotal.toLocaleString('en-IN')}\nShipping: ${orderShipping === 0 ? 'FREE' : '₹' + orderShipping}\nTotal: ₹${orderTotal.toLocaleString('en-IN')}\n\nDelivery to:\n${orderDetails.name}\n${orderDetails.address}, ${orderDetails.city}, ${orderDetails.state} - ${orderDetails.pin}\nPhone: ${orderDetails.phone}\n\nPayment ID: ${response.razorpay_payment_id}`
-        );
-        window.open(`https://wa.me/918619697628?text=${msg}`, '_blank');
+        const orderSummary = `${lines}\n\nSubtotal: ₹${orderSubtotal.toLocaleString('en-IN')}\nShipping: ${orderShipping === 0 ? 'FREE' : '₹' + orderShipping}\nTotal: ₹${orderTotal.toLocaleString('en-IN')}`;
+
+        // Send email to Khushi via EmailJS
+        emailjs.init('jDKoMfZLuiGZL_AKC');
+        emailjs.send('service_xk6m9ir', 'template_ci4l9z9', {
+          order_id: response.razorpay_payment_id,
+          order_details: orderSummary,
+          customer_name: orderDetails.name,
+          address: `${orderDetails.address}, ${orderDetails.city}, ${orderDetails.state} - ${orderDetails.pin}`,
+          phone: orderDetails.phone,
+          payment_id: response.razorpay_payment_id,
+          total: orderTotal.toLocaleString('en-IN')
+        }).catch(err => console.error('EmailJS error:', err));
+
         cart = [];
         saveCart();
         saveCart();
