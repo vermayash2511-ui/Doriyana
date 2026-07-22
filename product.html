@@ -651,6 +651,18 @@ const PRODUCTS = [
     desc:'A detailed crochet mini Jeep with an open-top wire frame, contrast wheels, and a custom number plate — a fun handcrafted display piece or gift for the car enthusiast. Add your own number plate text on request.',
     details:['Wire-framed open-top design','Contrast crochet wheels','Custom number plate option','Fully handcrafted','Approx. 12 cm long','Made to order — 14–21 days'],
     care:'Spot clean only. Keep away from moisture. Avoid direct sunlight to prevent yarn fading.' },
+  { id:'forhim-avengerskeychain', name:'Avengers Keychain', cat:'For Him', price:399, badge:'New',
+    images:['images/forhim-avengerskeychain.jpg'],
+    colours:['Ironman','Hulk','Thor','Spiderman','Captain America'],
+    desc:'A pocket-sized amigurumi Avenger, handcrafted stitch by stitch with a sturdy keyring attachment — pick your favourite hero to carry with you every day.',
+    details:['Soft cotton yarn','Sturdy metal keyring','Embroidered facial details','Fully handcrafted','Approx. 5–6 cm','Made to order — 7–10 days'],
+    care:'Spot clean only. Keep away from moisture.' },
+  { id:'forhim-jerseykeychain', name:'Jersey Keychain', cat:'For Him', price:120, badge:'New',
+    images:['images/forhim-jerseykeychain-1.jpg','images/forhim-jerseykeychain-2.jpg'],
+    customEnquiry:true,
+    desc:'A custom mini crochet jersey keychain, personalised with your favourite player\'s name and number — a fun accessory for any sports fan. Message us on WhatsApp to let us know which player\'s jersey you\'d like.',
+    details:['Custom name & number embroidery','Sturdy keyring attachment','Fully handcrafted','Approx. 5 cm','Made to order — 7–10 days'],
+    care:'Spot clean only. Keep away from moisture.' },
 
   // SACRED CORNER
   { id:'sacred-bow', name:'Sacred Bow Decor', cat:'Sacred Corner', price:599, badge:'New',
@@ -891,6 +903,8 @@ function renderProduct() {
         <div class="pd-actions">
           ${product.soldOut
             ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
+            : product.customEnquiry
+              ? `<a href="https://wa.me/918619697628?text=${encodeURIComponent(`Hi Doriyana! I'd like to order the ${product.name} 🧡 Could you tell me which player's jersey design is available?`)}" target="_blank" rel="noopener" class="pd-add-btn" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Message on WhatsApp</a>`
             : product.sizes
               ? `<button class="pd-add-btn" id="pdAddBtn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none" onclick="(function(){if(!window._selectedSize)return;const col=window._selectedColour?' — '+window._selectedColour:'';addToCart('${product.name}'+col+' — '+window._selectedSize.label,'${product.cat}',window._selectedSize.price,'${product.images[0]}');openCart();})()">Select a size to add to bag</button>`
             : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';const img=window._selectedImg||'${product.images[0]}';addToCart('${product.name}'+col,'${product.cat}',${product.price},img);openCart();})()">Add to Bag</button>`}
