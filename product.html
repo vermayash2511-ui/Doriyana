@@ -968,7 +968,7 @@ function renderProduct() {
           ${product.soldOut
             ? `<button class="pd-add-btn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none">Sold Out</button>`
             : product.customEnquiry
-              ? `<a href="https://wa.me/918619697628?text=${encodeURIComponent(`Hi Doriyana! I'd like to order the ${product.name} 🧡 Could you tell me which player's jersey design is available?`)}" target="_blank" rel="noopener" class="pd-add-btn" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Message on WhatsApp</a>`
+              ? `<a href="https://wa.me/918619697628?text=${encodeURIComponent(`Hi, Team Doriyana! I'd like to customize a ${product.name}.\nPlayer Name: \nJersey Number: \nTeam: `)}" target="_blank" rel="noopener" class="pd-add-btn" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Message on WhatsApp</a>`
             : product.sizes
               ? `<button class="pd-add-btn" id="pdAddBtn" disabled style="background:var(--muted);color:var(--muted-foreground);cursor:not-allowed;transform:none" onclick="(function(){if(!window._selectedSize)return;const col=window._selectedColour?' — '+window._selectedColour:'';addToCart('${product.name}'+col+' — '+window._selectedSize.label,'${product.cat}',window._selectedSize.price,'${product.images[0]}');openCart();})()">Select a size to add to bag</button>`
             : `<button class="pd-add-btn" onclick="(function(){const col=window._selectedColour?(' — '+window._selectedColour):'';const img=window._selectedImg||'${product.images[0]}';addToCart('${product.name}'+col,'${product.cat}',${product.price},img);openCart();})()">Add to Bag</button>`}
