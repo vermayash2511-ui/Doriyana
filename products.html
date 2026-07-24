@@ -399,11 +399,13 @@ const CATEGORIES = {
   },
   flowers: {
     title: 'Flowers',
+    customize: { img:'images/flower-buildyourown.jpg', title:'Build Your Own <em style="font-style:italic;font-weight:300">Bouquet</em>', text:'Select your favorite flowers and create a bouquet that\'s uniquely yours.', waText:'Hi Doriyana! I\'d like to build my own custom flower bouquet 💐' },
     products: [
-      { id:'flower-starry-night', name:'Starry Night Flower', price:299, badge:'New', img:'images/flower-starry-night.jpg', desc:'Bold blue flower inspired by Van Gogh.' },
-      { id:'flower-lily', name:'Crochet Lily', price:399, badge:'', img:'images/flower-lily.jpg', desc:'Striking magenta lily with yellow stamen.' },
-      { id:'flower-tulip', name:'Crochet Tulip', price:250, badge:'Cute', img:'images/flower-tulip.jpg', desc:'Soft pink 3D tulip with green stem and leaf.' },
-      { id:'flower-sunflower', name:'Crochet Sunflower', price:499, badge:'Bestseller', img:'images/flower-sunflower.jpg', desc:'Golden sunflowers with rich brown centres.' },
+      { id:'flower-sunflower', name:'Sunflower', badge:'Bestseller', img:'images/flower-sunflower.jpg', desc:'Golden crochet sunflower with a rich brown centre and green stem — available in small and big sizes.', hasSizes:true },
+      { id:'flower-tulip', name:'Tulip', price:150, badge:'Cute', img:'images/flower-tulip.jpg', desc:'A soft crochet tulip with a green stem and leaf, wrapped and ribbon-tied — a sweet single-stem gift.' },
+      { id:'flower-redwinerose', name:'Red Wine Rose Bouquet', price:2400, badge:'Bestseller', img:'images/flower-redwinerose.jpg', desc:'Six deep red crochet roses with green leaves, wrapped in elegant black paper and ribbon — a stunning statement bouquet.' },
+      { id:'flower-lily', name:'Lily', price:300, badge:'New', img:'images/flower-lily.jpg', desc:'A striking red crochet lily with delicate stamens, wrapped in black paper with a satin ribbon.' },
+      { id:'flower-thairose', name:'Thai Rose', price:300, badge:'New', img:'images/flower-thairose.jpg', desc:'A lush, layered crochet Thai rose with ruffled petals — available in Yellow, Pink, Purple, and Red.' },
     ]
   },
   couple: {
@@ -501,7 +503,7 @@ function customizeBanner(cat) {
     </div>
     <div style="background:var(--primary);padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem">
       <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.7)">✦ Special for you</span>
-      <h3 style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:white;line-height:1.2">Customize <em style="font-style:italic;font-weight:300">Yours</em></h3>
+      <h3 style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:white;line-height:1.2">${cat.customize.title || `Customize <em style="font-style:italic;font-weight:300">Yours</em>`}</h3>
       <p style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.65">${cat.customize.text}</p>
       <a href="https://wa.me/918619697628?text=${encodeURIComponent(cat.customize.waText || 'Hi Doriyana! I\'d like to customize something special 🎀')}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:white;color:var(--primary);padding:.625rem 1.25rem;border-radius:9999px;font-size:.8rem;font-weight:600;text-decoration:none;width:fit-content;transition:opacity .2s">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
